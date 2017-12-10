@@ -1,9 +1,12 @@
-from flask import Flask, jsonify, abort, request
+from flask import Flask, abort, request
 
+from db.db_helper import init
+from model.user_object import UserObj
+from persistence.user_dao import search_user, add_user
 from utils.parser import user_parser_json
-from model.user_model import User
 
 app = Flask(__name__)
+init()
 
 
 def exception_404():
@@ -12,7 +15,11 @@ def exception_404():
 
 @app.route('/login/open', methods=['GET'])
 def get_user():
-    user = User('vini', '123')
+
+    # this method have to receive the user from the url
+    # user = UserObj('vini', '123')  # only for test
+    # add_user(user)
+    user = search_user('vini')
     return user_parser_json(user)
 
 
@@ -22,7 +29,9 @@ def create_user():
     if not request.json or 'login' not in request.json:
         exception_404()
 
-    user = User(request.json['login'], request.json['password'])
+    user = UserObj(request.json['login'], request.json['password'])
+    user.set_type("student")
+    add_user(user)
 
     return "Adicionado com sucesso {}".format(user)
 
@@ -32,10 +41,8 @@ def update_user(login):
     if not login:
         exception_404()
 
-    #TODO metodo de busca do banco com task_id
-    user = User('a', 'b') #usando as paradas do banco
-    user.set_login(request.json['login'])
-    user.set_password(request.json['password'])
+    user_obj = search_user(login)
+    user_obj.set_password(request.json['password'])
     # TODO metodo de atualizaçao do banco
 
 
@@ -43,9 +50,7 @@ def update_user(login):
 def delete_user(login):
     if not login:
         exception_404()
-    # TODO metodo de busca do banco com task_id
-    user = User('a', 'b')  # usando as paradas do banco
-    # TODO metodo de adeletar do banco
+    delete_user(login)
 
 
 if __name__ == '__main__':

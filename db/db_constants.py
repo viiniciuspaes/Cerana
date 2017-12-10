@@ -4,6 +4,7 @@ TABLE_USER = "users"
 USER_ID = "user_id"
 USER_LOGIN = "login"
 USER_PASSWORD = "password"
+USER_ACTIVE = "active"
 USER_TYPE = 'type'
 
 TABLE_PROFILE = "profiles"

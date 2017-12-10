@@ -11,8 +11,10 @@ class User(Base):
     __tablename__ = cons.TABLE_USER
 
     id = Column(cons.USER_ID, Integer, primary_key=True)
-    password = Column(cons.USER_PASSWORD, String, nullable=False)
-    user_type = Column(cons.USER_TYPE, String, nullable=False)
+    login = Column(cons.USER_LOGIN, String(60), nullable=False)
+    password = Column(cons.USER_PASSWORD, String(60), nullable=False)
+    user_type = Column(cons.USER_TYPE, String(60), nullable=False)
+    active = Column(cons.USER_ACTIVE, Boolean, nullable=False)
 
 
 class Profile(Base):
@@ -20,18 +22,18 @@ class Profile(Base):
 
     id = Column(cons.PROFILE_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-    town = Column(cons.TOWN, String, nullable=True)
+    town = Column(cons.TOWN, String(60), nullable=True)
     level = Column(cons.PROFILE_LEVEL, Integer, nullable=True)
-    occupation = Column(cons.OCCUPATION, String, nullable=True)
-    telephone = Column(cons.TELEPHONE, String, nullable=True)
-    specialty = Column(cons.SPECIALTY, String, nullable=True)
+    occupation = Column(cons.OCCUPATION, String(60), nullable=True)
+    telephone = Column(cons.TELEPHONE, String(60), nullable=True)
+    specialty = Column(cons.SPECIALTY, String(60), nullable=True)
 
 
 class Tag(Base):
     __tablename__ = cons.TABLE_TAG
 
     id = Column(cons.TAG_ID, Integer, primary_key=True)
-    name = Column(cons.TAG_NAME, String, nullable=False)
+    name = Column(cons.TAG_NAME, String(60), nullable=False)
 
 
 class Question(Base):
@@ -39,9 +41,9 @@ class Question(Base):
 
     id = Column(cons.QUESTION_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-    id_tag = Column(cons.USER_ID, Integer, ForeignKey(Tag.id), nullable=False)
-    question = Column(cons.QUESTION, String, nullable=False)
-    description = Column(cons.DESCRIPTION, String, nullable=False)
+    id_tag = Column(cons.TAG_ID, Integer, ForeignKey(Tag.id), nullable=False)
+    question = Column(cons.QUESTION, String(260), nullable=False)
+    description = Column(cons.DESCRIPTION, String(600), nullable=False)
 
 
 class Comment(Base):
@@ -52,7 +54,7 @@ class Comment(Base):
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
     likes = Column(cons.N_LIKES, Integer, nullable=False)
     mark = Column(cons.RIGHT_MARK, Boolean, nullable=True)
-    answer = Column(cons.ANSWER, String, nullable=False)
+    answer = Column(cons.ANSWER, String(600), nullable=False)
 
 
 class StudyLevel(Base):
@@ -60,8 +62,8 @@ class StudyLevel(Base):
 
     id = Column(cons.STUDY_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-    degree = Column(cons.DEGREE_LEVEL, String, nullable=False)
-    detail = Column(cons.DETAILS, String, nullable=True)
+    degree = Column(cons.DEGREE_LEVEL, String(60), nullable=False)
+    detail = Column(cons.DETAILS, String(120), nullable=True)
 
 
 class Report(Base):
@@ -75,13 +77,18 @@ class Report(Base):
 def get_engine():
 
     user = "root"
-    password = "password"
+    password = ""
     address = "localhost"
     database_name = cons.DATABASE
     engine = create_engine('mysql+pymysql://%s:%s@%s/%s' % (user, password, address, database_name), echo=True)
-    # engine = create_engine('mssql+pymssql://%s:%s@%s:5000/%s' %(user, password, address, database_name), echo=True)
+    # engine = create_engine('mysql+pymysql://%s:%s@%s:3000/%s' %(user, password, address, database_name), echo=True)
 
     return engine
+
+
+def get_session():
+    engine = get_engine()
+    return sessionmaker(bind=engine)
 
 
 def init():

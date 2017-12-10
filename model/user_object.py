@@ -1,9 +1,10 @@
-class User:
+class UserObj:
     def __init__(self, login, password):
         self.login = login
         self.password = password
         self.user_id = None
         self.active = True
+        self.type = "student"
 
     def get_id(self):
         return self.user_id
@@ -31,3 +32,9 @@ class User:
 
     def get_state(self):
         return self.active
+
+    def get_type(self):
+        return self.type
+
+    def set_type(self, type):
+        self.type = type
