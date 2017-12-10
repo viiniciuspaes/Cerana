@@ -2,7 +2,7 @@ from flask import Flask, abort, request
 
 from db.db_helper import init
 from model.user_object import UserObj
-from persistence.user_dao import search_user, add_user
+from persistence.user_dao import search_user, add_user, validate_user
 from utils.parser import user_parser_json
 
 app = Flask(__name__)
@@ -13,18 +13,19 @@ def exception_404():
     abort(404)
 
 
-@app.route('/login/open', methods=['GET'])
-def get_user():
+@app.route('/login/open:<login>,<password>', methods=['GET'])
+def get_user(login, password):
 
     # this method have to receive the user from the url
     # user = UserObj('vini', '123')  # only for test
     # add_user(user)
-    user = search_user('vini')
+    # user = search_user('vini')
+    user = validate_user(login, password)
     return user_parser_json(user)
 
 
-@app.route('/login/create', methods=['POST'])
-def create_user():
+@app.route('/login/create:<login>,<password>', methods=['POST'])
+def create_user(login, password):
 
     if not request.json or 'login' not in request.json:
         exception_404()
@@ -36,8 +37,8 @@ def create_user():
     return "Adicionado com sucesso {}".format(user)
 
 
-@app.route('/login/update<string:login>', methods=['PUT'])
-def update_user(login):
+@app.route('/login/update:<login>,<password>', methods=['PUT'])
+def update_user(login, password):
     if not login:
         exception_404()
 
@@ -46,7 +47,7 @@ def update_user(login):
     # TODO metodo de atualizaçao do banco
 
 
-@app.route('/login/delete<string:login>', methods=['DELETE'])
+@app.route('/login/delete:<login>', methods=['DELETE'])
 def delete_user(login):
     if not login:
         exception_404()
