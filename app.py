@@ -17,8 +17,8 @@ def exception_404():
 def get_user(login, password):
 
     # this method have to receive the user from the url
-    # user = UserObj('vini', '123')  # only for test
-    # add_user(user)
+    user_add = UserObj(login, password)  # only for test
+    add_user(user_add)
     # user = search_user('vini')
     user = validate_user(login, password)
     return user_parser_json(user)
