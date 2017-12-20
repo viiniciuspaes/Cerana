@@ -12,7 +12,7 @@ PROFILE_ID = "profile_id"
 USER_ID
 PROFILE_NAME = "name"
 BIRTH = "birth"
-TOWN = "town"
+CITY = "city"
 PROFILE_LEVEL = "level"
 OCCUPATION = "occupation"
 TELEPHONE = "phone"

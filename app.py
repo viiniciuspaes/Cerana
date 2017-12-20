@@ -1,4 +1,4 @@
-from flask import Flask, abort, request
+from flask import Flask, abort, request, render_template
 
 from db.db_helper import init
 from model.user_object import UserObj
@@ -17,11 +17,14 @@ def exception_404():
 def get_user(login, password):
 
     # this method have to receive the user from the url
-    user_add = UserObj(login, password)  # only for test
-    add_user(user_add)
+    # user_add = UserObj(login, password)  # only for test
+    # add_user(user_add)
     # user = search_user('vini')
     user = validate_user(login, password)
-    return user_parser_json(user)
+    if user:
+        return user_parser_json(user)
+    else:
+        return "usuario nao cadastrado"
 
 
 @app.route('/login/create:<login>,<password>', methods=['POST'])
@@ -52,6 +55,11 @@ def delete_user(login):
     if not login:
         exception_404()
     delete_user(login)
+
+
+@app.route('/tela/', methods=['GET', 'POST'])
+def test():
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

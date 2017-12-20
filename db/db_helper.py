@@ -22,7 +22,8 @@ class Profile(Base):
 
     id = Column(cons.PROFILE_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-    town = Column(cons.TOWN, String(60), nullable=True)
+    name = Column(cons.PROFILE_NAME, String(60), nullable=False)
+    city = Column(cons.CITY, String(60), nullable=True)
     level = Column(cons.PROFILE_LEVEL, Integer, nullable=True)
     occupation = Column(cons.OCCUPATION, String(60), nullable=True)
     telephone = Column(cons.TELEPHONE, String(60), nullable=True)
@@ -50,7 +51,7 @@ class Comment(Base):
     __tablename__ = cons.TABLE_COMMENT
 
     id = Column(cons.COMMENT_ID, Integer, primary_key=True)
-    id_question = Column(cons.QUESTION_ID, Integer, ForeignKey(User.id), nullable=False)
+    id_question = Column(cons.QUESTION_ID, Integer, ForeignKey(Question.id), nullable=False)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
     likes = Column(cons.N_LIKES, Integer, nullable=False)
     mark = Column(cons.RIGHT_MARK, Boolean, nullable=True)
@@ -72,6 +73,30 @@ class Report(Base):
     id = Column(cons.REPORT_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
     id_question = Column(cons.QUESTION_ID, Integer, ForeignKey(User.id), nullable=False)
+
+
+class Animal(Base):
+    __tablename__ = cons.TABLE_ANIMALS
+
+    id = Column(cons.ANIMAL_ID, Integer, primary_key=True)
+    scientific_name = Column(cons.ANIMAL_SCIENTIFIC_NAME, String(60), nullable=False)
+    popular_name = Column(cons.ANIMALS_COMMON_NAME, String(60), nullable=False)
+    family = Column(cons.ANIMALS_FAMILY, String(60), nullable=False)
+    kingdom = Column(cons.ANIMALS_KINGDOM, String(60), nullable=False)
+    phylum = Column(cons.ANIMALS_PHYLUM, String(60), nullable=False)
+    description = Column(cons.ANIMALS_DESCRIPTION, String(260), nullable=False)
+
+
+class Plant(Base):
+    __tablename__ = cons.TABLE_PLANTS
+
+    id = Column(cons.PLANT_ID, Integer, primary_key=True)
+    scientific_name = Column(cons.PLANT_SCIENTIFIC_NAME, String(60), nullable=False)
+    popular_name = Column(cons.PLANT_COMMON_NAME, String(60), nullable=False)
+    family = Column(cons.PLANT_FAMILY, String(60), nullable=False)
+    kingdom = Column(cons.PLANT_KINGDOM, String(60), nullable=False)
+    phylum = Column(cons.PLANT_PHYLUM, String(60), nullable=False)
+    description = Column(cons.PLANT_DESCRIPTION, String(260), nullable=False)
 
 
 def get_engine():

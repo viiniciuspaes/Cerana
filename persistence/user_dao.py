@@ -33,13 +33,16 @@ def search_user(login):
 def validate_user(login, password):
     session = get_session()
     session = session()
-    user_query = session.query(User).filter(User.login == login and User.password == password)
-    user_query = user_query[0]
-    user_obj = UserObj(user_query.login, user_query.password)
-    user_obj.set_type(user_query.user_type)
-    session.close()
-
-    return user_obj
+    user_query = session.query(User).filter(User.login == login, User.password == password)
+    if len(user_query.all()) > 0:
+        user_query = user_query[0]
+        user_obj = UserObj(user_query.login, user_query.password)
+        user_obj.set_type(user_query.user_type)
+        session.close()
+        return user_obj
+    else:
+        session.close()
+        return None
 
 
 def get_all_users():
@@ -55,4 +58,3 @@ def delete_user(login):
     session.query(User).filter(User.login == login).delete()
     session.commit()
     session.close()
-
