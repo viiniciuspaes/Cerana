@@ -8,8 +8,8 @@ from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
-app.secret_key = 'p9Bv<3Eid9%$i01'
-# Bootstrap(app)
+app.config['SECRET_KEY'] = 'you-will-never-guess'
+Bootstrap(app)
 init()
 
 
