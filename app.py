@@ -1,13 +1,15 @@
-from flask import Flask, abort, request, render_template
+from flask import Flask, abort, request, flash, redirect, render_template, url_for
+from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
 from model.user_object import UserObj
 from persistence.user_dao import search_user, add_user, validate_user
-from utils.parser import user_parser_json
+from views.forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
+app.secret_key = 'p9Bv<3Eid9%$i01'
+Bootstrap(app)
 init()
-
 
 def exception_404():
     abort(404)
@@ -57,10 +59,26 @@ def delete_user(login):
     delete_user(login)
 
 
-@app.route('/tela/', methods=['GET', 'POST'])
-def test():
-    return render_template("index.html")
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/home')
+def homepage():
+    return render_template("home/index.html")
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Você se cadastrou com sucesso! Agora só precisa acessar sua conta.')
+
+        return redirect(url_for('login'))
+    return render_template("auth/register.html", form=form, title="Register")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect(url_for('homepage'))
+    return render_template("auth/login.html", form=form, title="Login")
 
 if __name__ == '__main__':
     app.run()
