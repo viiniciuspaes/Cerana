@@ -6,6 +6,7 @@ from model.user_object import UserObj
 from persistence.user_dao import search_user, add_user, validate_user
 from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
@@ -15,19 +16,6 @@ init()
 
 def exception_404():
     abort(404)
-
-
-@app.route('/login/testando', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if not validate_user(request.form['username'], request.form['password']):
-            error = 'Invalid Credentials. Please try again.'
-            return error
-        else:
-            return redirect(url_for('login')) #sei essa parte nao
-    return render_template('auth/testando.html', error=error)
-
 
 @app.route('/login/open:<login>,<password>', methods=['GET'])
 def get_user(login, password):
@@ -88,13 +76,25 @@ def register():
         return redirect(url_for('login'))
     return render_template("auth/register.html", form=form, title="Register")
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    form = LoginForm()
+    if form.validate_on_submit():
+        if not validate_user(form.email.data, form.password.data):
+            error = 'Dados inválidos. Por favor tente novamente.'
+            return error
+        else:
+            return redirect(url_for('dashboard'))
+    return render_template('auth/login.html', form=form, title="Login", error=error)
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         return redirect(url_for('homepage'))
-#     return render_template("auth/login.html", form=form, title="Login")
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return ('usuário logado, parabéns')
+
+@app.route('/logout')
+def logout():
+    return redirect(url_for('homepage'))
 
 
 if __name__ == '__main__':

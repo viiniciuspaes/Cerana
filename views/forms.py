@@ -16,10 +16,6 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirmar Senha')
     submit = SubmitField('Cadastrar')
 
-    def validate_email(self, field):
-        if Employee.query.filter_by(email=field.data).first():
-            raise ValidationError('Email já está em uso.')
-
 class LoginForm(FlaskForm):
     """
     Form para login
