@@ -43,7 +43,7 @@ class Question(Base):
     id = Column(cons.QUESTION_ID, Integer, primary_key=True)
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
     id_tag = Column(cons.TAG_ID, Integer, ForeignKey(Tag.id), nullable=False)
-    question = Column(cons.QUESTION, String(260), nullable=False)
+    question = Column(cons.QUESTION, String(260), nullable=False, unique=True)
     description = Column(cons.DESCRIPTION, String(600), nullable=False)
 
 
