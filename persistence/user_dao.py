@@ -33,7 +33,7 @@ def search_user(login):
 def validate_user(login, password):
     session = get_session()
     session = session()
-    user_query = session.query(User).filter(User.login == login, User.password == password).all()
+    user_query = session.query.filter_by(User.login == login, User.password == password).first()
     if len(user_query) > 0:
         user_query = user_query[0]
         user_obj = UserObj(user_query.login, user_query.password)
