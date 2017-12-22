@@ -1,5 +1,5 @@
 from flask import Flask, abort, request, flash, redirect, render_template, url_for
-from flask_bootstrap import Bootstrap
+# from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
 from model.user_object import UserObj
@@ -9,7 +9,7 @@ from views.forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
 app.secret_key = 'p9Bv<3Eid9%$i01'
-Bootstrap(app)
+# Bootstrap(app)
 init()
 
 
@@ -17,14 +17,26 @@ def exception_404():
     abort(404)
 
 
+@app.route('/login/testando', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if not validate_user(request.form['username'], request.form['password']):
+            error = 'Invalid Credentials. Please try again.'
+            return error
+        else:
+            return redirect(url_for('login')) #sei essa parte nao
+    return render_template('auth/testando.html', error=error)
+
+
 @app.route('/login/open:<login>,<password>', methods=['GET'])
 def get_user(login, password):
 
     # this method have to receive the user from the url
-    # user_add = UserObj(login, password)  # only for test
-    # add_user(user_add)
-    # user = search_user('vini')
-    user = validate_user(login, password)
+    user_add = UserObj(login, password)  # only for test
+    add_user(user_add)
+    user = search_user(login)
+    # user = validate_user(login, password)
     if user:
         return user_parser_json(user)
     else:
@@ -77,12 +89,12 @@ def register():
     return render_template("auth/register.html", form=form, title="Register")
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        return redirect(url_for('homepage'))
-    return render_template("auth/login.html", form=form, title="Login")
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         return redirect(url_for('homepage'))
+#     return render_template("auth/login.html", form=form, title="Login")
 
 
 if __name__ == '__main__':
