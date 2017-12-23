@@ -10,7 +10,7 @@ from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-# Bootstrap(app)
+Bootstrap(app)
 init()
 
 
@@ -18,16 +18,16 @@ def exception_404():
     abort(404)
 
 
-@app.route('/login/testando', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if not validate_user(request.form['username'], request.form['password']):
-            error = 'Invalid Credentials. Please try again.'
-            return error
-        else:
-            return redirect(url_for('login')) # TODO ta errado isso
-    return render_template('auth/testando.html', error=error)
+# @app.route('/login/testando', methods=['GET', 'POST'])
+# def login():
+#     error = None
+#     if request.method == 'POST':
+#         if not validate_user(request.form['username'], request.form['password']):
+#             error = 'Invalid Credentials. Please try again.'
+#             return error
+#         else:
+#             return redirect(url_for('login')) # TODO ta errado isso
+#     return render_template('auth/testando.html', error=error)
 
 
 @app.route('/login/open:<login>,<password>', methods=['GET'])
@@ -83,7 +83,11 @@ def homepage():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():
+    if request.method == 'POST':
+        print("entrou aqui")
+        print(form.email.data, "    ", form.email.data)
+        user = UserObj(form.email.data, form.password.data)
+        add_user(user)
         flash('Você se cadastrou com sucesso! Agora só precisa acessar sua conta.')
 
         return redirect(url_for('login'))
@@ -95,6 +99,7 @@ def login():
     error = None
     form = LoginForm()
     if form.validate_on_submit():
+        print(form.email.data, "    ", form.password.data)
         if not validate_user(form.email.data, form.password.data):
             error = 'Dados inválidos. Por favor tente novamente.'
             return error
