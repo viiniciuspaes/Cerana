@@ -37,6 +37,9 @@ class CommentObj:
     def set_likes(self, n_likes):
         self.likes = n_likes
 
+    def add_like(self):
+        self.likes +=1
+
     def set_mark(self, mark):
         self.mark = mark
 

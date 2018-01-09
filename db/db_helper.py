@@ -55,7 +55,7 @@ class Comment(Base):
     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
     likes = Column(cons.N_LIKES, Integer, nullable=False)
     mark = Column(cons.RIGHT_MARK, Boolean, nullable=True)
-    answer = Column(cons.ANSWER, String(600), nullable=False)
+    answer = Column(cons.ANSWER, String(600), nullable=False, unique=True)
 
 
 class StudyLevel(Base):

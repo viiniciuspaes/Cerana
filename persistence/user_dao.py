@@ -18,27 +18,41 @@ def add_user(user_obj):
     return user_id
 
 
+def update_user(user_obj):
+    pass
+"""
+users.update().values(
+        name=select([addresses.c.email_address]).\
+                where(addresses.c.user_id==users.c.id).\
+                as_scalar() OPTIONAL
+    )"""
+
+
+def search_user_from_id(user_id):
+    session = get_session()
+    session = session()
+    user_query = session.query(User).filter(User.id == user_id)
+    user_query = user_query[0]
+    if user_query:
+        user_obj = UserObj(user_query.login, user_query.password)
+        user_obj.set_type(user_query.user_type)
+        session.close()
+
+        return user_obj
+    else:
+        return None
+
+
 def search_user(login):
     session = get_session()
     session = session()
     user_query = session.query(User).filter(User.login == login)
     user_query = user_query[0]
-    user_obj = UserObj(user_query.login, user_query.password)
-    user_obj.set_type(user_query.user_type)
-    session.close()
-
-    return user_obj
-
-
-def validate_user(login, password):
-    session = get_session()
-    session = session()
-    user_query = session.query.filter_by(User.login == login, User.password == password).first()
-    if len(user_query) > 0:
-        user_query = user_query[0]
+    if user_query:
         user_obj = UserObj(user_query.login, user_query.password)
         user_obj.set_type(user_query.user_type)
         session.close()
+
         return user_obj
     else:
         session.close()
@@ -50,6 +64,7 @@ def get_all_users():
     session = session()
     user_query = session.query(User).all()
     session.close()
+    return user_query
 
 
 def delete_user(login):
