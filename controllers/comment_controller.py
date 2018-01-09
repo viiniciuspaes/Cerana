@@ -1,8 +1,13 @@
-from persistence.comment_dao import search_comment, add_comment
+from persistence.comment_dao import search_comment, add_comment, update_comment, get_all_comments_from_question
+
+
+def search_for_comment(answer):
+    return search_comment(answer)
 
 
 def like_comment(comment_obj):
-    pass
+    comment_obj.add_like()
+    update_comment(comment_obj)
 
 
 def comment_post(comment_obj, question_obj):
@@ -18,8 +23,10 @@ def delete_comment(comment_obj):
     delete_comment(comment_obj.get_answer())
 
 
-def order_comments():
-    pass
+def order_comments(question):
+    comment_list = get_all_comments_from_question(question)
+    comment_list = comment_list.sort(key=lambda x: x.likes, reverse=True) # maybe there is a need to change x.likes to x.get_likes()
+    return comment_list
 
 
 def report_comment():

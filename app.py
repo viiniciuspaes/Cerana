@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
 from model.user_object import UserObj
-from persistence.user_dao import search_user, add_user, validate_user
+from persistence.user_dao import search_user, add_user
 from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
 

@@ -1,21 +1,20 @@
 from model.comment_object import CommentObj
-from model.question_object import QuestionObj
 from persistence.comment_dao import get_all_comments_from_question
-from persistence.question_dao import search_question
+from persistence.question_dao import search_question, add_question, get_all_questions, delete_question
 
 
-def exists(question_name):
-    exist = search_question(question_name)
+def exists(question):
+    exist = search_question(question.get_name())
     return True if exist else False
 
 
-def n_comment(question_name):
-    questions = get_all_comments_from_question(question_name)
+def n_comment(question):
+    questions = get_all_comments_from_question(question.get_name())
     return len(questions)
 
 
-def get_all_comments(question_name):
-    comments = get_all_comments_from_question(question_name)
+def get_all_comments(question):
+    comments = get_all_comments_from_question(question.get_question())
     comments_list = []
     for comment_query in comments:
         comments_obj = CommentObj()
@@ -27,3 +26,20 @@ def get_all_comments(question_name):
         comments_obj.set_comment_id(comment_query.id)
         comments_list.append(comments_obj)
     return comments_list
+
+
+def create_question(question):
+    question_obj = search_question(question)
+    if question_obj:
+        return False
+    else:
+        question_id = add_question(question_obj)
+        return question_id
+
+
+def list_all_questions():
+    return get_all_questions()
+
+
+def erase_question(question):
+    delete_question(question)

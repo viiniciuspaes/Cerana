@@ -1,4 +1,4 @@
-from persistence.user_dao import search_user, add_user
+from persistence.user_dao import search_user, add_user, delete_user
 
 
 def validate_sing_up(user):
@@ -29,8 +29,9 @@ def encrypt_password(user):
     pass
 
 
-def delete_user(user):
-    pass
+def erase_user(user):
+    delete_user(user.get_login())
+
 
 def update_user(user):
     pass

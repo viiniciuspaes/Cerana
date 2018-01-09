@@ -52,6 +52,23 @@ def search_comment(answer):
         return None
 
 
+def update_comment(comment):
+    session = get_session()
+    session = session()
+    new_comment = session.query(Comment).filter(Comment.answer == comment.get_answer())
+    new_comment = new_comment[0]
+    new_comment.answer = comment.get_answer()
+    new_comment.id_question = comment.get_question_id()
+    new_comment.id_user = comment.get_user_id()
+    new_comment.likes = comment.get_likes()
+    new_comment.mark = comment.get_mark()
+    session.commit()
+
+    # can be done in another way
+    # ex = update(User.__table__).where(User.id==123).values(name=u"Fulana")
+    # Session.execute(ex)
+
+
 def get_all_comments():
     session = get_session()
     session = session()
@@ -61,7 +78,10 @@ def get_all_comments():
 
 
 def get_all_comments_from_question(question):
-    pass
+    session = get_session()
+    session = session()
+    questions = session.query(Comment).filter(Comment.id_question == question.get_id()).all()
+    return questions
 
 
 def delete_comment(answer):

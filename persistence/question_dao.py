@@ -38,6 +38,13 @@ def get_all_questions():
     return question_query
 
 
+def get_all_questions_from_user(user):
+    session = get_session()
+    session = session()
+    questions = session.query(Question).filter(Question.id_user == user.get_id()).all()
+    return questions
+
+
 def delete_question(question):
     session = get_session()
     session = session()
