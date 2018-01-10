@@ -7,6 +7,8 @@ from persistence.user_dao import search_user, add_user
 from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
 
+from controllers.user_controller import validate_login, validate_sing_up
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 Bootstrap(app)
@@ -43,7 +45,7 @@ def register():
     if form.validate_on_submit():
         user = UserObj(form.email.data, form.password.data)
         add_user(user)
-        flash('Você se cadastrou com sucesso! ')
+        flash('Você se cadastrou com sucesso!')
 
         return redirect(url_for('login'))
     return render_template("auth/register.html", form=form, title="Register")
@@ -54,7 +56,7 @@ def login():
     error = None
     form = LoginForm()
     if form.validate_on_submit():
-        if not validate_user(form.email.data, form.password.data):
+        if validate_login(form.email.data, form.password.data) == None:
             error = 'Dados inválidos. Por favor tente novamente.'
             return error
         else:
