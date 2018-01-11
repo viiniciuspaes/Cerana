@@ -3,15 +3,14 @@ from persistence.user_dao import search_user, add_user, delete_user
 
 def validate_sing_up(user):
     user_result = search_user(user.get_login())
-    if user_result == None:
+    if user_result:
         return None
     else:
         add_user(user)
-
+        return user
 
 def validate_login(user, password):
     user_to_login = search_user(user)
-
     if user_to_login != None and password == user_to_login.get_password():
         return user_to_login
     else:

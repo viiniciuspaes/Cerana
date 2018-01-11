@@ -11,11 +11,11 @@ class User(Base):
     __tablename__ = cons.TABLE_USER
 
     id = Column(cons.USER_ID, Integer, primary_key=True)
-    login = Column(cons.USER_LOGIN, String(60), nullable=False)
+    login = Column(cons.USER_LOGIN, String(60), nullable=False, unique=True)
     password = Column(cons.USER_PASSWORD, String(60), nullable=False)
     user_type = Column(cons.USER_TYPE, String(60), nullable=False)
     active = Column(cons.USER_ACTIVE, Boolean, nullable=False)
-
+    #colunaTeste = Column("teste", Boolean, unique=True)
 
 class Profile(Base):
     __tablename__ = cons.TABLE_PROFILE

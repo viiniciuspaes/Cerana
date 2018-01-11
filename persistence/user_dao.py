@@ -46,8 +46,9 @@ def search_user_from_id(user_id):
 def search_user(login):
     session = get_session()
     session = session()
-    user_query = session.query(User).filter(User.login == login)
-    user_query = user_query[0]
+    user_query = session.query(User).filter(User.login == login).all()
+    if len(user_query) > 0:
+        user_query = user_query[0]
     if user_query:
         user_obj = UserObj(user_query.login, user_query.password)
         user_obj.set_type(user_query.user_type)

@@ -44,10 +44,12 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = UserObj(form.email.data, form.password.data)
-        add_user(user)
-        flash('Você se cadastrou com sucesso!')
-
-        return redirect(url_for('login'))
+        valida = validate_sing_up(user)
+        if valida:
+            flash('Você se cadastrou com sucesso!')
+            return redirect(url_for('login'))
+        else:
+            flash('usuario ja cadastrado!')
     return render_template("auth/register.html", form=form, title="Register")
 
 
