@@ -24,13 +24,21 @@ def search_animal(scientific_name):
     session = get_session()
     session = session()
     animal_query = session.query(Animal).filter(Animal.scientific_name == scientific_name)
-    animal_query = animal_query[0]
-    animal_obj = AnimalObj(animal_query.scrientific_name, animal_query.popular_name)
-    # TODO the rest of the attributes need to be returned as well
-    animal_obj.set_animal_id(animal_query.id)
-    session.close()
+    if animal_query:
+        animal_query = animal_query[0]
+        animal_obj = AnimalObj(animal_query.scrientific_name, animal_query.popular_name)
+        animal_obj.set_description(animal_query.description)
+        animal_obj.set_family(animal_query.family)
+        animal_obj.set_phylum(animal_query.phylum)
+        animal_obj.set_kingdom(animal_query.kingdom)
+        animal_obj.set_animal_id(animal_query.id)
+        animal_obj.set_animal_id(animal_query.id)
+        session.close()
 
-    return animal_obj
+        return animal_obj
+    else:
+        session.close()
+        return None
 
 
 def get_all_animals():

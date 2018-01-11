@@ -18,7 +18,7 @@ def erase_plant(plant):
     delete_plant(plant.get_scientific_name())
 
 
-def update_plant(user):
+def update_plant(plant):
     pass
 
 

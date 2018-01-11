@@ -46,3 +46,6 @@ class AnimalObj:
 
     def set_animal_id(self, id):
         self.animal_id = id
+
+    def set_kingdom(self, kingdom):
+        self.kingdom = kingdom

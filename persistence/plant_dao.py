@@ -24,13 +24,19 @@ def search_plant(scientific_name):
     session = get_session()
     session = session()
     plant_query = session.query(Plant).filter(Plant.scientific_name == scientific_name)
-    plant_query = plant_query[0]
-    plant_obj = PlantObj(plant_query.scrientific_name, plant_query.popular_name)
-    # TODO the rest of the attributes need to be returned as well
-    plant_obj.set_plant_id(plant_query.id)
-    session.close()
-
-    return plant_obj
+    if plant_query:
+        plant_query = plant_query[0]
+        plant_obj = PlantObj(plant_query.scrientific_name, plant_query.popular_name)
+        plant_obj.set_description(plant_query.description)
+        plant_obj.set_family(plant_query.family)
+        plant_obj.set_phylum(plant_query.phylum)
+        plant_obj.set_kingdom(plant_query.kingdom)
+        plant_obj.set_plant_id(plant_query.id)
+        session.close()
+        return plant_obj
+    else:
+        session.close()
+        return None
 
 
 def get_all_plants():

@@ -46,3 +46,6 @@ class PlantObj:
 
     def set_plant_id(self, id):
         self.plant_id = id
+
+    def set_kingdom(self, kingdom):
+        self.kingdom = kingdom
