@@ -58,7 +58,7 @@ def login():
     error = None
     form = LoginForm()
     if form.validate_on_submit():
-        if validate_login(form.email.data, form.password.data) == None:
+        if validate_login(form.email.data, form.password.data):
             error = 'Dados inválidos. Por favor tente novamente.'
             return error
         else:

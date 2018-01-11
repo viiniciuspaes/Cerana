@@ -1,4 +1,4 @@
-from persistence.plant_dao import add_plant, delete_plant, search_plant
+from persistence.plant_dao import add_plant, delete_plant, search_plant, search_plant_incomplete_name
 
 
 def create_plant_register(plant):
@@ -23,4 +23,8 @@ def update_plant(plant):
 
 
 def get_plant(scientific_name):
-    return search_plant(scientific_name)
+    plant = search_plant(scientific_name)
+    if plant:
+        return plant
+    else:
+        return search_plant_incomplete_name(scientific_name)
