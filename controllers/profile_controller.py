@@ -10,3 +10,7 @@ def load_user_data(user):
 def load_user_questions(user):
     questions = get_all_questions_from_user(user)
     return questions if questions else None
+
+
+def list_all_questions_from_user(user):
+    return get_all_questions_from_user(user)

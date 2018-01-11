@@ -1,6 +1,10 @@
 from persistence.user_dao import search_user, add_user, delete_user
 
 
+def get_user(login):
+    return search_user(login)
+
+
 def validate_sing_up(user):
     user_result = search_user(user.get_login())
     if user_result:

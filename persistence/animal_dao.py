@@ -20,7 +20,7 @@ def add_animal(animal_obj):
     return animal_id
 
 
-def search_plant(scientific_name):
+def search_animal(scientific_name):
     session = get_session()
     session = session()
     animal_query = session.query(Animal).filter(Animal.scientific_name == scientific_name)
@@ -33,16 +33,16 @@ def search_plant(scientific_name):
     return animal_obj
 
 
-def get_all_plants():
+def get_all_animals():
     session = get_session()
     session = session()
-    plant_query = session.query(Animal).all()
+    animal_query = session.query(Animal).all()
     session.close()
 
-    return plant_query
+    return animal_query
 
 
-def delete_plant(scientific_name):
+def delete_animal(scientific_name):
     session = get_session()
     session = session()
     session.query(Animal).filter(Animal.scientific_name == scientific_name).delete()

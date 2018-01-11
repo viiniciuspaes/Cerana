@@ -43,3 +43,7 @@ def list_all_questions():
 
 def erase_question(question):
     delete_question(question)
+
+
+def get_question(question):
+    return search_question(question)
