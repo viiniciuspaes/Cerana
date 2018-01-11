@@ -9,9 +9,10 @@ def validate_sing_up(user):
         add_user(user)
         return user
 
+
 def validate_login(user, password):
     user_to_login = search_user(user)
-    if user_to_login != None and password == user_to_login.get_password():
+    if user_to_login and password == user_to_login.get_password():
         return user_to_login
     else:
         return None

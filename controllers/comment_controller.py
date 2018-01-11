@@ -25,7 +25,7 @@ def delete_comment(comment_obj):
 
 def order_comments(question):
     comment_list = get_all_comments_from_question(question)
-    comment_list = comment_list.sort(key=lambda x: x.likes, reverse=True) # maybe there is a need to change x.likes to x.get_likes()
+    comment_list = comment_list.sort(key=lambda x: x.get_likes(), reverse=False)
     return comment_list
 
 
