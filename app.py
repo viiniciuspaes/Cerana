@@ -8,10 +8,10 @@ from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
 
 from controllers.user_controller import validate_login, validate_sing_up
-from views.profile import simple_page as simple_page_blueprint
+from views.profile import profile as profile_blueprint
 
 app = Flask(__name__)
-app.register_blueprint(simple_page_blueprint)
+app.register_blueprint(profile_blueprint)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 Bootstrap(app)
 init()
