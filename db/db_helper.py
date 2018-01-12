@@ -15,7 +15,6 @@ class User(Base):
     password = Column(cons.USER_PASSWORD, String(60), nullable=False)
     user_type = Column(cons.USER_TYPE, String(60), nullable=False)
     active = Column(cons.USER_ACTIVE, Boolean, nullable=False)
-    #colunaTeste = Column("teste", Boolean, unique=True)
 
 class Profile(Base):
     __tablename__ = cons.TABLE_PROFILE
@@ -37,25 +36,25 @@ class Tag(Base):
     name = Column(cons.TAG_NAME, String(60), nullable=False)
 
 
-# class Question(Base):
-#     __tablename__ = cons.TABLE_QUESTION
-#
-#     id = Column(cons.QUESTION_ID, Integer, primary_key=True)
-#     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-#     id_tag = Column(cons.TAG_ID, Integer, ForeignKey(Tag.id), nullable=False)
-#     question = Column(cons.QUESTION, String(260), nullable=False, unique=True)
-#     description = Column(cons.DESCRIPTION, String(600), nullable=False)
+class Question(Base):
+    __tablename__ = cons.TABLE_QUESTION
+
+    id = Column(cons.QUESTION_ID, Integer, primary_key=True)
+    id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
+    id_tag = Column(cons.TAG_ID, Integer, ForeignKey(Tag.id), nullable=False)
+    question = Column(cons.QUESTION, String(260), nullable=False, unique=True)
+    description = Column(cons.DESCRIPTION, String(600), nullable=False)
 
 
-# class Comment(Base):
-#     __tablename__ = cons.TABLE_COMMENT
-#
-#     id = Column(cons.COMMENT_ID, Integer, primary_key=True)
-#     id_question = Column(cons.QUESTION_ID, Integer, ForeignKey(Question.id), nullable=False)
-#     id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
-#     likes = Column(cons.N_LIKES, Integer, nullable=False)
-#     mark = Column(cons.RIGHT_MARK, Boolean, nullable=True)
-#     answer = Column(cons.ANSWER, String(600), nullable=False, unique=True)
+class Comment(Base):
+    __tablename__ = cons.TABLE_COMMENT
+
+    id = Column(cons.COMMENT_ID, Integer, primary_key=True)
+    id_question = Column(cons.QUESTION_ID, Integer, ForeignKey(Question.id), nullable=False)
+    id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
+    likes = Column(cons.N_LIKES, Integer, nullable=False)
+    mark = Column(cons.RIGHT_MARK, Boolean, nullable=True)
+    answer = Column(cons.ANSWER, String(600), nullable=False, unique=True)
 
 
 class StudyLevel(Base):
