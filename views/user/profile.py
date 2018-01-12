@@ -10,3 +10,10 @@ def view_profile():
         return render_template('user/profile.html')
     except TemplateNotFound:
         abort(404)
+
+@profile.route('/edit_profile')
+def update_profile():
+    try:
+        return render_template('user/edit_profile.html')
+    except TemplateNotFound:
+        abort(404)

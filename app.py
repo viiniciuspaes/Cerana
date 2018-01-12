@@ -1,4 +1,4 @@
-from flask import Flask, abort, request, flash, redirect, render_template, url_for
+from flask import Flask, abort, flash, redirect, render_template, url_for
 from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
@@ -8,7 +8,7 @@ from utils.parser import user_parser_json
 from views.forms import LoginForm, RegistrationForm
 
 from controllers.user_controller import validate_login, validate_sing_up
-from views.profile import profile as profile_blueprint
+from views.user.profile import profile as profile_blueprint
 
 app = Flask(__name__)
 app.register_blueprint(profile_blueprint)
