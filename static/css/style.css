@@ -9,11 +9,11 @@ body, h1, h2, h3 {
 }
 
 a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
-  color: #aec251;
+  color: #337ab7;
 }
 
 a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover {
-  color: #5fd4ff;
+  color: #337ab7;
 }
 
 footer {
@@ -28,18 +28,18 @@ p.copyright {
 .alert-info {
     width: 50%;
     margin: auto;
-    color: #5fd4ff;
-    background-color: #5fd4ff;
-    border-color: #5fd4ff;
+    color: #337ab7;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
 
 .btn-default {
-    border-color: #5fd4ff;
-    color: #5fd4ff;
+    border-color: #337ab7;
+    color: #337ab7;
 }
 
 .btn-default:hover {
-    background-color: #5fd4ff;
+    background-color: #337ab7;
 }
 
 .center {
@@ -60,7 +60,7 @@ p.copyright {
 
 .intro-divider {
     width: 400px;
-    border-top: 1px solid #5fd4ff;
+    border-top: 1px solid #337ab7;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
@@ -68,7 +68,7 @@ p.copyright {
     padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
-    color: #5fd4ff;
+    color: #337ab7;
     background: url(../img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
     height: 100%;
