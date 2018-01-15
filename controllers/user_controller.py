@@ -1,4 +1,4 @@
-from persistence.user_dao import search_user, add_user, delete_user
+from persistence.user_dao import search_user, add_user, delete_user, get_query_from_user, search_user_from_id
 
 
 def get_user(login):
@@ -15,12 +15,16 @@ def validate_sing_up(user):
 
 
 def validate_login(user, password):
-    user_to_login = search_user(user)
-    if user_to_login and password == user_to_login.get_password():
-        return user_to_login
+    user_to_login_obj = search_user(user)
+    user_to_login_query = get_query_from_user(user)
+    user_data = (user_to_login_obj, user_to_login_query)
+    if user_to_login_obj and password == user_to_login_obj.get_password():
+        return user_data
     else:
         return None
 
+def get_user_logged(id):
+    return search_user_from_id(id)[1]
 
 def exists(user):
     return True if search_user(user.get_login()) else False

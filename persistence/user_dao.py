@@ -38,7 +38,7 @@ def search_user_from_id(user_id):
         user_obj.set_type(user_query.user_type)
         session.close()
 
-        return user_obj
+        return (user_obj,user_query)
     else:
         return None
 
@@ -59,6 +59,21 @@ def search_user(login):
         session.close()
         return None
 
+def get_query_from_user(user):
+    session = get_session()
+    session = session()
+    user_query = session.query(User).filter(User.login == user).first()
+    if user_query:
+        return user_query
+    else:
+        return None
+
+# def search_user_from_login(login_form): #metodo usado em app.py metodo login
+#     session = get_session()
+#     session = session()
+#     user = session.query(User).filter(User.login==login_form).first()
+#     session.close()
+#     return user
 
 def get_all_users():
     session = get_session()
