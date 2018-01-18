@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <title>Profile</title>
@@ -37,11 +37,10 @@
                             </div>
                             <nav class="side_menu">
                                 <ul class="navigation">
-                                    <li><a href="../html/edit_profile.html"><span class="navigation_item">
+                                    <li><a href="{{ url_for('profile.update_profile') }}"><span class="navigation_item">
                                         </span>Editar</a></li>
                                     <li><a href="#"><span class="navigation_item"></span>Banco</a></li>
                                     <li><a href="#"><span class="navigation_item"></span>Perguntas</a></li>
-                                    <li><a href="#"><span class="navigation_item"></span>Notificações</a></li>
                                 </ul>
                             </nav>
                         </div>
