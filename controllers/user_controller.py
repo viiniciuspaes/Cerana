@@ -23,8 +23,10 @@ def validate_login(user, password):
     else:
         return None
 
+
 def get_user_logged(id):
     return search_user_from_id(id)[1]
+
 
 def exists(user):
     return True if search_user(user.get_login()) else False
