@@ -7,7 +7,7 @@ from persistence.user_dao import search_user_from_id
 def get_user_from_question(question):
     question_obj = search_question(question)
     user_obj = search_user_from_id(question_obj.get_user_id())
-    return user_obj
+    return user_obj[0]
 
 
 def get_question_id(question):

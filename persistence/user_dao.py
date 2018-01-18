@@ -68,13 +68,6 @@ def get_query_from_user(user):
     else:
         return None
 
-# def search_user_from_login(login_form): #metodo usado em app.py metodo login
-#     session = get_session()
-#     session = session()
-#     user = session.query(User).filter(User.login==login_form).first()
-#     session.close()
-#     return user
-
 def get_all_users():
     session = get_session()
     session = session()

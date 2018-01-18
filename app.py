@@ -10,7 +10,7 @@ from controllers.user_controller import validate_login, validate_sing_up, get_us
 
 from views.user.profile import profile as profile_blueprint
 from views.auth.home_auth import auth as auth_blueprint
-from views.home.homepage import  home as home_blueprint
+from views.home.homepage import home as home_blueprint
 
 from flask_login import LoginManager, login_user, logout_user
 
