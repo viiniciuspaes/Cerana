@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo
 
+
 class RegistrationForm(FlaskForm):
     """
     Form para cadastro
@@ -15,6 +16,7 @@ class RegistrationForm(FlaskForm):
                                         ])
     confirm_password = PasswordField('Confirmar Senha')
     submit = SubmitField('Cadastrar')
+
 
 class LoginForm(FlaskForm):
     """
