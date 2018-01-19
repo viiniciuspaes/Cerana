@@ -19,13 +19,17 @@ def add_user(user_obj):
 
 
 def update_user(user_obj):
-    pass
-"""
-users.update().values(
-        name=select([addresses.c.email_address]).\
-                where(addresses.c.user_id==users.c.id).\
-                as_scalar() OPTIONAL
-    )"""
+    session = get_session()
+    session = session()
+    returned_user = session.query(User).filter(User.login == user_obj.get_login())
+    returned_user = returned_user[0]
+    returned_user.login = user_obj.get_login()
+    returned_user.password = user_obj.get_password()
+    returned_user.id = user_obj.get_id()
+    returned_user.active = user_obj.get_state()
+    returned_user.type = user_obj.get_type()
+    session.commit()
+    session.close()
 
 
 def search_user_from_id(user_id):
@@ -38,7 +42,7 @@ def search_user_from_id(user_id):
         user_obj.set_type(user_query.user_type)
         session.close()
 
-        return (user_obj,user_query)
+        return (user_obj, user_query)
     else:
         return None
 
@@ -59,6 +63,7 @@ def search_user(login):
         session.close()
         return None
 
+
 def get_query_from_user(user):
     session = get_session()
     session = session()
@@ -67,6 +72,7 @@ def get_query_from_user(user):
         return user_query
     else:
         return None
+
 
 def get_all_users():
     session = get_session()

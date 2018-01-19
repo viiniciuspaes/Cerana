@@ -8,6 +8,13 @@ class ProfileObj:
         self.occupation = None
         self.phone = None
         self.specialty = specialty
+        self.user_id = None
+
+    def get_user_id(self):
+        return self.user_id
+
+    def set_user_id(self, id):
+        self.user_id = id
 
     def get_name(self):
         return self.name

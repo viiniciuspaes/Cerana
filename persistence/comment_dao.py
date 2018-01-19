@@ -63,6 +63,7 @@ def update_comment(comment):
     new_comment.likes = comment.get_likes()
     new_comment.mark = comment.get_mark()
     session.commit()
+    session.close()
 
     # can be done in another way
     # ex = update(User.__table__).where(User.id==123).values(name=u"Fulana")

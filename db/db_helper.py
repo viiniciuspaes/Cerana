@@ -35,7 +35,7 @@ class Profile(Base):
     __tablename__ = cons.TABLE_PROFILE
 
     id = Column(cons.PROFILE_ID, Integer, primary_key=True)
-    id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False)
+    id_user = Column(cons.USER_ID, Integer, ForeignKey(User.id), nullable=False, unique=True)
     name = Column(cons.PROFILE_NAME, String(60), nullable=False)
     city = Column(cons.CITY, String(60), nullable=True)
     level = Column(cons.PROFILE_LEVEL, Integer, nullable=True)
