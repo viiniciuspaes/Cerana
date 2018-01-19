@@ -1,104 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Pergunta</title>
-        <link rel="stylesheet" href="../css/base.css">
-        <link rel="stylesheet" href="../css/pergunta_style.css">
+        <title>Profile</title>
+        <!-- Última versão CSS compilada e minificada -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Tema opcional -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Última versão JavaScript compilada e minificada -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/profile_style.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
-            <div class="view_account">
-                <section class="module">
-                    <div class="module_inner">
-                        <div class="side_bar">
-                            <div class="user_info">
-                                <img class="img_profile" src="../imagens/avatar.png" >
-                                <ul class="info_list">
-                                    <li class="name" id="tv_nome_info">Pessoa</li>
-                                    <li class="label label-info" id="tv_profissao_info">Profissao</li>
-                                    <li class="email" id="tv_email_info">Email</li>
 
-                                </ul>
-                            </div>
-                            <nav class="side_menu">
-                                <ul class="navigation">
-                                    <li><a href="../html/edit_profile.html"><span class="navigation_item">
-                                            </span>Editar</a></li>
-                                    <li><a href="#"><span class="navigation_item"></span>Banco</a></li>
-                                    <li><a href="#"><span class="navigation_item"></span>Perguntass</a></li>
-                                    <li><a href="#"><span class="navigation_item"></span>Notificações</a></li>
-                                </ul>
-                            </nav>
+
+            <!-- Navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/dashboard">Voltar para Home</a></li>
+              </ul>
+            </div><!--onde o nav morre -->
+          </div>
+        </nav>
+            
+            <div class="container">
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <img class="img_profile" width="90px" height="90px" src="avatar.jpg"> <v<br/>
                         </div>
 
-                        <div class="content_panel">
-                            <div class="question_card">
-                                <div class="question_title">
-                                    <h2>Titulo da Pergunta</h2>
-                                </div>
-                                <div class="question_content">
-                                    <p>
-                                       Content block
-                                    </p>
-                                </div>
-                                <div class="question_image">
-                                    <img src="../imagens/planta.jpg">
-                                </div>
-                                <div class="question_tags">
-                                    <p>
-                                        <a href="#">tag1</a>
-                                        <a href="#">tag2</a>
-                                        <a href="#">tag4</a>
-                                    </p>
-                                </div>
 
+
+                    <!--    <div class="col-md-12">
+                            <br>
+                            <a href="#"><span class="navigation_item" color="#000000"></span>Notificações</a><br />
+                        </div> -->
+                        <div class="col-md-12">
+                            <br>
+                            <a href="/dashboard"><span class="navigation_item" color="#000000"></span>Home</a><br /> <!--Botar a variavel aqui -->
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                            <a href="#"><span class="navigation_item" color="#000000"></span>Banco</a><br /> <!--Botar a variavel aqui -->
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                            <a href="../profile"><span class="navigation_item" color="#000000"></span>Perfil</a><br /> <!--Botar a variavel aqui -->
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                            <a href="#"><span class="navigation_item" color="#000000"></span>Pessoas</a><br /><!--Botar a variavel aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="content_panel col-md-10">
+                            <div class="content_header_wrapper" class="bg-info">
+                                <h2 class="title" align="center">Minhas Questões</h2>
+                                <div class="actions col-md-offset-10">
+                                    <button type="button" class="btn btn-primary" id="btn_new_question"><i class="btn_text">
+                                        </i> Nova Questão</button>
+                                </div>
                             </div>
-                            <ul class="awenser_list">
-                                <li>
-                                    <div class="question_card">
-                                        <div class="question_content">
-                                            <div class="question_info">
-                                                <img class="img_profile" src="../imagens/avatar.png" >
-                                                <ul class="info_list">
-                                                    <li class="name" >Pessoa</li>
-                                                    <li class="label label-info" >Profissao</li>
-                                                    <li class="email" >Email</li>
-                                                </ul>
-                                            </div>
-                                            <div class="question_coment">
-                                                <p>
-                                                    Comment block
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="create_answer">
-                                <div id="comment_form">
-                                    <div class="resposta_title">
-                                        <h2>Nova respostaa</h2>
-                                    </div>
-                                    <div class="resposta_info">
-                                        <div>
-                                            <input type="text" name="familia" id="familia=" placeholder="Familia">
-                                        </div>
-                                        <div>
-                                            <input type="text" name="filo" id="filo" value="" placeholder="Filo">
-                                        </div>
-                                        <div>
-                                            <input type="text" name="n_cientifio" id="n_cientifico" value="" placeholder="Nome Cientifico">
-                                        </div>
-                                    </div>
 
-                                    <div class="resposta_text">
-                                        <textarea rows="10" name="comment" id="comment" placeholder="Comment"></textarea>
-                                    </div>
-                                    <div >
-                                        <Button class="resposta_submit"  type="submit" name="submit" value="Responder">Responder</Button>
-                                    </div>
-
+                            <div class="perguntas_list_view">
+                                <div class="table_responsive_wrapper">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="type"></th>
+                                            <th class="perguntas">Pergunta</th>
+                                            <th class="data">Data</th>
+                                            <th class="respostas">Respostas</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>                                    <tr>
+                                            <td class="type"><i class="pergunta_item"></i></td>
+                                            <td class="perguntas"><a href="#">pergunta</a></td>
+                                            <td class="data">Sep 23, 2015</td>
+                                            <td class="respostas">18</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
