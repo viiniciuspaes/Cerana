@@ -240,6 +240,7 @@ th {
   }
   .navbar {
     display: none;
+    background-color: #41afdc;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -2548,7 +2549,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 50%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -4493,8 +4494,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #41afdc;
+  border-color: #41afdc; 
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4505,7 +4506,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #777;
+  color: #ffffff;
 }
 .navbar-default .navbar-nav > li > a {
   color: #777;
@@ -6755,3 +6756,11 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.navbar-fixed-top {
+    
+}
+
+.navbar-fixed-top {
+    
+}

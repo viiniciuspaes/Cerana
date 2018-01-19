@@ -40,7 +40,7 @@ def load_user(id):
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home')
 def homepage():
-    return render_template("home/index.html")
+    return render_template("index.html")
 
 
 @app.route('/register', methods=['GET', 'POST'])
