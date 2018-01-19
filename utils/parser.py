@@ -12,3 +12,12 @@ def user_parser_json(user):
     ]
 
     return jsonify({'user': user})
+
+
+def text_to_json(text):
+    text = [
+        {
+            'text': text
+        },
+    ]
+    return jsonify({'text': text})

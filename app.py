@@ -1,4 +1,4 @@
-from flask import Flask, abort, flash, redirect, render_template, url_for
+from flask import Flask, abort, flash, redirect, render_template, url_for, request
 from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
@@ -6,6 +6,7 @@ from model.user_object import UserObj
 
 
 from controllers.user_controller import validate_login, validate_sing_up, get_user_logged
+from utils.parser import text_to_json, user_parser_json
 from views.auth.forms import RegistrationForm, LoginForm
 
 from views.user.profile import profile as profile_blueprint
@@ -27,7 +28,8 @@ Bootstrap(app)
 lm = LoginManager()
 lm.init_app(app)
 
-init()
+DEBUG_MODE = True
+init(drop_tables=DEBUG_MODE)
 
 
 def exception_404():
@@ -72,6 +74,19 @@ def login():
             login_user(valida[1])
             return redirect(url_for('dashboard'))
     return render_template('auth/login.html', form=form, title="Login", error=error)
+
+
+@app.route('/login/mobile', methods=['GET', 'POST'])
+def login_mobile():
+    receive = request.get_json()
+    if receive:
+        valida = validate_login(receive["login"], receive["password"])
+        if not valida:
+            error = 'Dados inválidos. Por favor tente novamente.'
+            return text_to_json(error)
+        else:
+            login_user(valida[1])
+            return user_parser_json(valida[0])
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
