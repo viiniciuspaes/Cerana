@@ -44,7 +44,7 @@ def load_user(id):
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home')
 def homepage():
-    return render_template("index.html")
+    return render_template("home/index-bootstrap.html")
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -58,7 +58,7 @@ def register():
             return redirect(url_for('login'))
         else:
             flash('usuario ja cadastrado!')
-    return render_template("auth/register.html", form=form, title="Register")
+    return render_template("auth/register-bootstrap.html", form=form, title="Register")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -73,7 +73,7 @@ def login():
         else:
             login_user(valida[1])
             return redirect(url_for('dashboard'))
-    return render_template('auth/login.html', form=form, title="Login", error=error)
+    return render_template('auth/login-bootstrap.html', form=form, title="Login", error=error)
 
 
 @app.route('/login/mobile', methods=['GET', 'POST'])

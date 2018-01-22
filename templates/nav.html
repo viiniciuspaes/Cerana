@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {margin: 0;}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #41afdc;
-}
+    <title>Carousel Template for Bootstrap</title>
 
-ul.topnav li {float: left;}
+    <!-- Bootstrap core CSS -->
+    <link href="../../static/bootstrap_index/css/bootstrap.min.css" rel="stylesheet">
 
-ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-ul.topnav li a:hover:not(.active) {background-color: #111;}
-
-ul.topnav li a.active {background-color: #000000;}
-
-ul.topnav li.right {float: right;}
-
-@media screen and (max-width: 600px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-}
-</style>
+    <!-- Custom styles for this template -->
+    <link href="../../static/bootstrap_index/css/carousel.css" rel="stylesheet">
 </head>
+
 <body>
 
-<ul class="topnav">
-  <!--<img src="../imagens/abelhas.jpg">-->
-  <li><a class="active" href="{{ url_for('homepage') }}">Cerana</a></li>
-  <li class="right"><a href="{{ url_for('register') }}">Sign up</a></li>
-  <li class="right"><a href="{{ url_for('login') }}">Sign in</a></li>
-
-</ul>
-
+    <header>
+        <nav class="navbar border navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="{{ url_for('homepage') }}">Cerana</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Cadastrar-se<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Acessar</a>
+                    </li>
+                </ul>
+                <!--
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                -->
+            </div>
+        </nav>
+    </header>
 </body>
 </html>
