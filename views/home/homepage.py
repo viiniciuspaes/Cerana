@@ -7,7 +7,7 @@ home = Blueprint('home', __name__,
 @home.route('/', methods=['GET', 'POST'])
 def homepage():
     try:
-        return render_template("home/index.html")
+        return render_template("home/index-bootstrap.html")
     except TemplateNotFound:
         abort(404)
 

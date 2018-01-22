@@ -22,7 +22,7 @@ def login():
             login_user(valida[1])
             return redirect(url_for('home.dashboard'))
     try:
-        return render_template('auth/login.html', form=form, title="Login", error=error)
+        return render_template('auth/login-bootstrap.html', form=form, title="Login", error=error)
     except TemplateNotFound:
         abort(404)
 
@@ -40,7 +40,7 @@ def register():
         else:
             flash('usuario ja cadastrado!')
     try:
-        return render_template("auth/register.html", form=form, title="Register")
+        return render_template("auth/register-bootstrap.html", form=form, title="Register")
     except TemplateNotFound:
         abort(404)
 
