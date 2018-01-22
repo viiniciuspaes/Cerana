@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 Bootstrap(app)
 
 lm = LoginManager()
-lm.init_app(app)
+# lm.init_app(app)
 
 DEBUG_MODE = True
 init(drop_tables=DEBUG_MODE)
@@ -36,9 +36,9 @@ def exception_404():
     abort(404)
 
 
-@lm.user_loader
-def load_user(id):
-    return get_user_logged(id)
+# @lm.user_loader
+# def load_user(id):
+#     return get_user_logged(id)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -101,4 +101,5 @@ def logout():
 
 
 if __name__ == '__main__':
+    # lm.init_app(app)
     app.run()
