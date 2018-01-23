@@ -13,4 +13,4 @@ def homepage():
 
 @home.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('teste.html')
+    return render_template('home_home.html')
