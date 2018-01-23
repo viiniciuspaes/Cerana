@@ -90,7 +90,7 @@ def login_mobile():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('home_home.html')
+    return render_template('pesquisa.html')
 
 
 @app.route('/logout')
