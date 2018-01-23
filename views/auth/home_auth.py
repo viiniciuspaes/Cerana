@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, abort, redirect, url_for, flash
 from jinja2 import TemplateNotFound
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, LoginManager
 
 from model.user_object import UserObj
 from .forms import RegistrationForm, LoginForm

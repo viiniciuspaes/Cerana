@@ -24,11 +24,10 @@ app.register_blueprint(questions_blueprint)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 Bootstrap(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-lm = LoginManager()
-# lm.init_app(app)
-
-DEBUG_MODE = True
+DEBUG_MODE = False
 init(drop_tables=DEBUG_MODE)
 
 
@@ -36,9 +35,9 @@ def exception_404():
     abort(404)
 
 
-# @lm.user_loader
-# def load_user(id):
-#     return get_user_logged(id)
+@login_manager.user_loader
+def load_user(id):
+    return get_user_logged(id)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -101,5 +100,5 @@ def logout():
 
 
 if __name__ == '__main__':
-    # lm.init_app(app)
+    login_manager.init_app(app)
     app.run()
