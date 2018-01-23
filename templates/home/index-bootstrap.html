@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('register') }}">Cadastrar-se<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('auth.register') }}">Cadastrar-se<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}">Acessar</a>
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Acessar</a>
                     </li>
                 </ul>
                 <!--
@@ -59,7 +59,7 @@
                         <div class="carousel-caption text-left">
                             <h1>Projeto Cerana</h1>
                             <p>Venha fazer parte dessa comunidade.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('login') }}" role="button">Acessar agora</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('auth.login') }}" role="button">Acessar agora</a></p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <div class="carousel-caption">
                             <h1>Agronomia, Ciências Biológicas e áreas afins.</h1>
                             <p>Pergunte, responda, pesquise e contribua para evolução da informação.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('login') }}" role="button">Acessar agora</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('auth.login') }}" role="button">Acessar agora</a></p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <div class="carousel-caption text-right">
                             <h1>Conecte-se!</h1>
                             <p>Milhares de informações sobre flora e fauna de todo o mundo.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('login') }}" role="button">Acessar agora</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="{{ url_for('auth.login') }}" role="button">Acessar agora</a></p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
 
         <!-- FOOTER -->
         <footer class="container">
-            <p class="float-right"><a href="{{ url_for('homepage') }}">Voltar ao topo</a></p>
+            <p class="float-right"><a href="{{ url_for('home.homepage') }}">Voltar ao topo</a></p>
             <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
         </footer>
     </main>

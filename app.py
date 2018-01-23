@@ -12,7 +12,7 @@ from views.auth.forms import RegistrationForm, LoginForm
 from views.user.profile import profile as profile_blueprint
 from views.auth.home_auth import auth as auth_blueprint
 from views.home.homepage import  home as home_blueprint
-from views.questions.questions import questions as questions_blueprint
+from views.questions.include_questions import questions as questions_blueprint
 
 from flask_login import LoginManager, login_user, logout_user
 

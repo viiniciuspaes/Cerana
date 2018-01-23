@@ -5,6 +5,7 @@ home = Blueprint('home', __name__,
                     template_folder='templates')
 
 @home.route('/', methods=['GET', 'POST'])
+@home.route('/home', methods=['GET', 'POST'])
 def homepage():
     try:
         return render_template("home/index-bootstrap.html")
