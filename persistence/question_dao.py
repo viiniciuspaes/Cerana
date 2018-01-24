@@ -21,13 +21,17 @@ def add_question(question_obj):
 def search_question(question):
     session = get_session()
     session = session()
-    question_query = session.query(Question).filter(Question.question == question)
-    question_query = question_query[0]
-    question_obj = QuestionObj(question_query.questop)
-    question_obj.set_description(question_query.description)
-    session.close()
-
-    return question_obj
+    question_query = session.query(Question).filter(Question.question == question).all()
+    if len(question_query) > 0:
+        question_query = question_query[0]
+    if question_query:
+        question_obj = QuestionObj(question_query.questop)
+        question_obj.set_description(question_query.description)
+        session.close()
+        return question_obj
+    else:
+        session.close()
+        return None
 
 
 def get_all_questions():
