@@ -20,5 +20,5 @@ class SearchPlantForm(FlaskForm):
     """"
     Form para pesquisar planta.
     """"
-    name_plant = StringField('Nome da Planta', validators=[DataRequired()])
+    scientific_name = StringField('Nome Científico da Planta', validators=[DataRequired()])
     submit = SubmitField('Pesquisar Planta')
