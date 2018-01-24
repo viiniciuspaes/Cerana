@@ -27,4 +27,5 @@ def get_plant(scientific_name):
     if plant:
         return plant
     else:
-        return search_plant_incomplete_name(scientific_name)
+        #return search_plant_incomplete_name(scientific_name)
+        return None

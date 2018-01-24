@@ -25,9 +25,10 @@ def add_plant(plant_obj):
 def search_plant(scientific_name):
     session = get_session()
     session = session()
-    plant_query = session.query(Plant).filter(Plant.scientific_name == scientific_name)
-    if plant_query:
+    plant_query = session.query(Plant).filter(Plant.scientific_name == scientific_name).all()
+    if len(plant_query) > 0:
         plant_query = plant_query[0]
+    if plant_query:
         plant_obj = PlantObj(plant_query.scientific_name, plant_query.popular_name)
         plant_obj.set_description(plant_query.description)
         plant_obj.set_family(plant_query.family)

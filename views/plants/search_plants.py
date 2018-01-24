@@ -10,11 +10,11 @@ plants = Blueprint('plants', __name__,
 
 @plants.route('/search_plants', methods=['GET', 'POST'])
 def search_plants():
-    erro = None
     form = SearchPlantForm(csrf_enabled=False)
     if request.method == "POST":
         plant = get_plant(form.scientific_name.data)
-        filo = plant.phylum
-        return filo
+        if plant:
+            return plant.phylum
+        else:
+            return "nao achou"
     return render_template("pesquisa.html", form=form)
-    
