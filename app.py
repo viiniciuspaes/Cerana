@@ -1,4 +1,4 @@
-from flask import Flask, abort, flash, redirect, render_template, url_for, request
+from flask import Flask, abort, flash, redirect, render_template, url_for, request, Blueprint
 from flask_bootstrap import Bootstrap
 
 from db.db_helper import init
@@ -14,6 +14,7 @@ from views.auth.home_auth import auth as auth_blueprint
 from views.home.homepage import  home as home_blueprint
 from views.questions.include_questions import questions as questions_blueprint
 from views.plants.search_plants import plants as plants_blueprint
+from views.questions.search_questions import questions as questions_blueprint
 
 from flask_login import LoginManager, login_user, logout_user
 

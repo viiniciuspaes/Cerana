@@ -13,10 +13,10 @@ def homepage():
         abort(404)
 '''
 
-@questions.route('/questions/include_questions', methods=['GET', 'POST'])
+@questions.route('/include_questions', methods=['GET', 'POST'])
 def include_question():
     erro = None
-    form = IncludeQuestionForm()
+    form = IncludeQuestionsForm()
     if request.method == "POST":
         create_question(form.question.data, form.description.data)
         return render_template('/questions/search_pergunta.html')
