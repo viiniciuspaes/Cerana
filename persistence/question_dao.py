@@ -25,7 +25,7 @@ def search_question(question):
     if len(question_query) > 0:
         question_query = question_query[0]
     if question_query:
-        question_obj = QuestionObj(question_query.questop)
+        question_obj = QuestionObj(question_query.question)
         question_obj.set_description(question_query.description)
         session.close()
         return question_obj

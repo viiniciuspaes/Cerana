@@ -14,6 +14,6 @@ def search_questions():
     form = SearchQuestionsForm(csrf_enabled=False)
     if request.method == "POST":
         question = get_question(form.question.data)
-        filo = question.question
+        filo = question.get_question()
         return filo
     return render_template("questions/pesquisa_pergunta.html", form=form)
