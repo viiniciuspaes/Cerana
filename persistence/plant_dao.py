@@ -28,7 +28,7 @@ def search_plant(scientific_name):
     plant_query = session.query(Plant).filter(Plant.scientific_name == scientific_name)
     if plant_query:
         plant_query = plant_query[0]
-        plant_obj = PlantObj(plant_query.scrientific_name, plant_query.popular_name)
+        plant_obj = PlantObj(plant_query.scientific_name, plant_query.popular_name)
         plant_obj.set_description(plant_query.description)
         plant_obj.set_family(plant_query.family)
         plant_obj.set_phylum(plant_query.phylum)
