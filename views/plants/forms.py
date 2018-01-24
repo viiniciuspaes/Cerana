@@ -17,8 +17,8 @@ class IncludePlantForm(FlaskForm):
     submit = SubmitField('Cadastrar Planta')
 
 class SearchPlantForm(FlaskForm):
-    """"
+    """
     Form para pesquisar planta.
-    """"
+    """
     scientific_name = StringField('Nome Científico da Planta', validators=[DataRequired()])
     submit = SubmitField('Pesquisar Planta')

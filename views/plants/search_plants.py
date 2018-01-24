@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
 from controllers.plant_controller import *
+from .forms import *
+from flask import request
+
 plants = Blueprint('plants', __name__,
                     template_folder='templates')
 
@@ -10,4 +13,5 @@ def search_plants():
     form = SearchPlantForm()
     if request.method == "POST":
         plant = PlantObj(get_plant(form.scientific_name.data))
-        return render_template("pesquisa.html")
+    return render_template("pesquisa.html", form=form)
+    

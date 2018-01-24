@@ -20,7 +20,7 @@ def login():
             return error
         else:
             login_user(valida[1])
-            return redirect(url_for('home.dashboard'))
+            return redirect(url_for('plants.search_plants'))
     try:
         return render_template('auth/login-bootstrap.html', form=form, title="Login", error=error)
     except TemplateNotFound:
