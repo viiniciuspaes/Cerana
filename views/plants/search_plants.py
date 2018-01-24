@@ -4,10 +4,10 @@ from controllers.plant_controller import *
 plants = Blueprint('plants', __name__,
                     template_folder='templates')
 
-@plants.route('search_plant', methods=['GET', 'POST'])
-def include_plants():
+@plants.route('/search_plants', methods=['GET', 'POST'])
+def search_plants():
     erro = None
-    form = IncludePlantForm()
+    form = SearchPlantForm()
     if request.method == "POST":
-        get_plant(form.scientific_name.data)
-        return render_template("/plants/search_plant.html")
+        plant = PlantObj(get_plant(form.scientific_name.data))
+        return render_template("pesquisa.html")

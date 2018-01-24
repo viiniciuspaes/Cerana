@@ -13,6 +13,7 @@ from views.user.profile import profile as profile_blueprint
 from views.auth.home_auth import auth as auth_blueprint
 from views.home.homepage import  home as home_blueprint
 from views.questions.include_questions import questions as questions_blueprint
+from views.plants.search_plants import plants as plants_blueprint
 
 from flask_login import LoginManager, login_user, logout_user
 
@@ -21,6 +22,7 @@ app.register_blueprint(profile_blueprint)
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(home_blueprint)
 app.register_blueprint(questions_blueprint)
+app.register_blueprint(plants_blueprint)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 Bootstrap(app)

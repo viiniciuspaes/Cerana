@@ -42,9 +42,9 @@
     	    	<div class="col-md-6">
 	    		<div class="panel panel-default">
 	    			<div class="panel-body">
-	    				<form id="form_tweet" class="input-group" method="POST" action="{{ url_for('plants.search_plants') }}">
-                            {{form.hidden_tag}}
-                            {{form.form.scientific_name.data}}
+	    				<form class="input-group" method="POST" action="{{ url_for('plants.search_plants') }}">
+                            {{ form.hidden_tag() }}
+                            {{ render_field(form.scientific_name)}}
 	    					<!--<input type="text" id="Pesquisa_pergunta" name="Pesquisa_pergunta" class="form-control" placeholder="Que pergunta deseja pesquisar?" maxlength="140" />-->
 	    					<span class="input-group-btn">
 	    						<button class="btn btn-default" id="btn_pesquisa" type="submit">Pesquisar</button>
