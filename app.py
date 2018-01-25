@@ -12,10 +12,11 @@ from views.auth.forms import RegistrationForm, LoginForm
 from views.user.profile import profile as profile_blueprint
 from views.auth.home_auth import auth as auth_blueprint
 from views.home.homepage import  home as home_blueprint
-from views.questions.include_questions import questions as questions_blueprint
 from views.plants.search_plants import plants as plants_blueprint
 from views.questions.search_questions import questions as questions_blueprint
 from views.plants.include_plants import include_plants as include_plants_blueprint
+from views.questions.include_questions import create_questions as create_questions_blueprint
+
 from flask_login import LoginManager, login_user, logout_user
 
 app = Flask(__name__)
@@ -25,6 +26,7 @@ app.register_blueprint(home_blueprint)
 app.register_blueprint(questions_blueprint)
 app.register_blueprint(plants_blueprint)
 app.register_blueprint(include_plants_blueprint)
+app.register_blueprint(create_questions_blueprint)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 Bootstrap(app)
