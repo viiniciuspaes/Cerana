@@ -10,10 +10,11 @@ questions = Blueprint('questions', __name__,
 
 @questions.route('/search_questions', methods=['GET', 'POST'])
 def search_questions():
-    erro = None
     form = SearchQuestionsForm(csrf_enabled=False)
     if request.method == "POST":
         question = get_question(form.question.data)
-        filo = question.get_question()
-        return filo
+        if question:
+            return question.get_question()
+        else:
+            return "nao achou"
     return render_template("questions/pesquisa_pergunta.html", form=form)
