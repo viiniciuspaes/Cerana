@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+{% include 'nav.html' %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Cadastrar Planta</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../static/bootstrap_login/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../static/bootstrap_login/css/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin" method="POST" action="{{ url_for('plant.include_plants')}}">
+        {{  form.hidden_tag ()  }} 
+      <img class="mb-4" src="../../static/img/cerana_black_100x100.png" alt="" width="100" height="100">
+         {{  form.scientific_name(type="string", id="scientific_name", class="form-control", placeholder="Nome Científico", required="autofocus") }}
+         {{ form.plant_description(type="string", id="plant_description", class="form-control", placeholder="Descrição", required="required") }}
+         {{ form.popular_name(type="string", id="popular_name", class="form-control", placeholder="Nome Comum", required="required") }}
+         {{ form.family(type="string", id="family", class="form-control", placeholder="Família", required="required") }}
+         {{ form.kingdom(type="string", id="kingdom", class="form-control", placeholder="Reino", required="required") }}
+         {{ form.phylum(type="string", id="phylum", class="form-control", placeholder="Filo", required="required") }}
+      <button class="btn btn-lg btn-primary btn-block" type="submit"> </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+  </body>
+</html>

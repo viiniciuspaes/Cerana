@@ -1,12 +1,12 @@
 class PlantObj:
-    def __init__(self, cientifc_name, popular_name):
+    def __init__(self, cientifc_name, popular_name,family=None,kingdom=None,phylum=None,description=None):
         self.plant_id = None
         self.scientific_name = cientifc_name
         self.popular_name = popular_name
-        self.family = None
-        self.kingdom = None
-        self.phylum = None
-        self.description = None
+        self.family = family
+        self.kingdom = kingdom
+        self.phylum = phylum
+        self.description = description
 
     def get_plant_id(self):
         return self.plant_id

@@ -8,13 +8,13 @@ class IncludePlantForm(FlaskForm):
     Form para cadastrar planta.
     """
     scientific_name = StringField('Nome Científico', validators=[DataRequired()])
-    common_name = StringField('Nome Comum', validators=[DataRequired()])
+    popular_name = StringField('Nome Comum', validators=[DataRequired()])
     family = StringField('Família', validators=[DataRequired()])
-    kingdom	= StringField('Reino', validators=[DataRequired()])
+    kingdom = StringField('Reino', validators=[DataRequired()])
     phylum = StringField('Filo', validators=[DataRequired()])
     #photograph =
     plant_description = StringField('Descrição', validators=[DataRequired()])
-    submit = SubmitField('Cadastrar Planta')
+    submit = SubmitField('Cadastrar')
 
 class SearchPlantForm(FlaskForm):
     """
