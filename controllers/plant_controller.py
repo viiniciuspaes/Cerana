@@ -6,8 +6,8 @@ def create_plant_register(plant):
     if plant_result:
         return None
     else:
-        add_plant(plant)
-        return plant
+        plant_id = add_plant(plant)
+        return plant_id
 
 
 def exists(plant):

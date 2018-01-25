@@ -1,7 +1,12 @@
 from flask import Flask, abort, flash, redirect, render_template, url_for, request, Blueprint
 from flask_bootstrap import Bootstrap
+from flask_uploads import IMAGES, UploadSet, configure_uploads
 
+from controllers.photos_controller import save_photo
+from controllers.plant_controller import create_plant_register
 from db.db_helper import init
+from model.photo_object import PhotoObj
+from model.plant_object import PlantObj
 from model.user_object import UserObj
 
 
@@ -27,7 +32,12 @@ app.register_blueprint(questions_blueprint)
 app.register_blueprint(plants_blueprint)
 app.register_blueprint(include_plants_blueprint)
 app.register_blueprint(create_questions_blueprint)
+
 app.config['SECRET_KEY'] = 'you-will-never-guess'
+app.config['UPLOADED_PHOTOS_DEST'] = 'imagens/plants'
+
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
 
 Bootstrap(app)
 login_manager = LoginManager()
@@ -97,6 +107,19 @@ def login_mobile():
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     return render_template('pesquisa.html')
+
+
+@app.route('upload', methods=['GET', 'POST'])
+def upload_test():
+    if request.method == 'POST' and 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        plant_obj = PlantObj("example", 'example_popular')
+        plant_id = create_plant_register(plant_obj)
+        photo_obj = PhotoObj(filename)
+        photo_obj.set_plant_id(plant_id)
+        save_photo(photo_obj)
+        return filename
+    return 'So para testes'
 
 
 @app.route('/logout')

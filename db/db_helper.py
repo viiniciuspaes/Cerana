@@ -99,7 +99,7 @@ class Animal(Base):
     family = Column(cons.ANIMALS_FAMILY, String(60))
     kingdom = Column(cons.ANIMALS_KINGDOM, String(60))
     phylum = Column(cons.ANIMALS_PHYLUM, String(60))
-    description = Column(cons.ANIMALS_DESCRIPTION, String(260), nullable=False)
+    description = Column(cons.ANIMALS_DESCRIPTION, String(254), nullable=False)
 
 
 class Plant(Base):
@@ -111,7 +111,16 @@ class Plant(Base):
     family = Column(cons.PLANT_FAMILY, String(60))
     kingdom = Column(cons.PLANT_KINGDOM, String(60))
     phylum = Column(cons.PLANT_PHYLUM, String(60))
-    description = Column(cons.PLANT_DESCRIPTION, String(260), nullable=False)
+    description = Column(cons.PLANT_DESCRIPTION, String(254), nullable=False)
+
+
+class Photo(Base):
+    __tablename__ = cons.TABLE_PHOTO
+
+    id = Column(cons.PHOTO_ID, Integer, primary_key=True)
+    plant_id = Column(cons.PLANT_ID, ForeignKey(Plant.id), nullable=False)
+    url = Column(cons.URL, String(254), nullable=True)
+    path = Column(cons.PATH, String(254), nullable=False, unique=True)
 
 
 def get_engine():
