@@ -1,58 +1,33 @@
 <!DOCTYPE HTML>
+
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+{% include 'navbar2.html' %}
 
-		<title>Pesquisar Planta</title>
+<head>
 
-		<!-- jquery - link cdn -->
-		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap_login/css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="../static/bootstrap_login/css/signin.css" rel="stylesheet">
 
-		<script type="text/javascript"></script>
 
-	</head>
+</head>
 
-	<body>
+<body class="text-center">
 
-		<!-- Static navbar -->
-	    <nav class="navbar navbar-default navbar-static-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	        </div>
 
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav navbar-right">
-				<li><a href="{{ url_for('questions.search_questions') }}">Pesquisar Pergunta</a></li>
-				<li><a href="">Banco</a></li>
-	            <li><a href="">Sair</a></li>
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </nav>
+    <form class="form-signin" method="POST" action="{{ url_for('plants.search_plants') }}">
+        {{ form.hidden_tag() }} 
+        {{ form.scientific_name(type="string", id="search_plants", class="form-control", placeholder="Nome Científico", required="autofocus") }}
 
-    	    	<div class="col-md-6">
-	    		<div class="panel panel-default">
-	    			<div class="panel-body">
-	    				<form class="input-group" method="POST" action="{{ url_for('plants.search_plants') }}">
-                            {{ form.hidden_tag() }}
-                            {{ form.scientific_name(type="string", id="scientific_name", class="form-control", placeholder="scientific_name", required="required") }}
-                            
-	    					<!--<input type="text" id="Pesquisa_pergunta" name="Pesquisa_pergunta" class="form-control" placeholder="Que pergunta deseja pesquisar?" maxlength="140" />-->
-	    					<span class="input-group-btn">
-	    						<button class="btn btn-default" id="btn_pesquisa" type="submit">Pesquisar</button>
-	    					</span>
-	    				</form>
-	    			</div>
-	    		</div>
-				</div>
-	</body>
+        <button class="btn btn-lg btn-primary btn-block" id="btn_pesquisa" type="submit">Pesquisar Planta</button>
+
+    </form>
+
+</body>
+
 </html>

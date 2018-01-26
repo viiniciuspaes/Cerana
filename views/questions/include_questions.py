@@ -12,7 +12,8 @@ def include_question():
     erro = None
     form = IncludeQuestionsForm()
     if form.validate_on_submit():
-        question = QuestionObj(form.question.data, form.description.data,)
+        
+        question = QuestionObj(form.question.data, form.description.data)
         criado = create_question(question)
 ##        if criado:
 ##            return redirect(url_for('search_plants'))

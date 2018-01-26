@@ -9,6 +9,7 @@ class IncludeQuestionsForm(FlaskForm):
     """
     question = StringField('Pergunta', validators=[DataRequired()])
     description = StringField('Descrição', validators=[DataRequired()])
+    tag = StringField('Tag', validators=[DataRequired()])
     submit = SubmitField('Enviar Pergunta')
 
 class SearchQuestionsForm(FlaskForm):
