@@ -14,7 +14,12 @@ def search_plants():
     if request.method == "POST":
         plant = get_plant(form.scientific_name.data)
         if plant:
-            return plant.phylum
+            return '''
+        <form method="post">
+            <p><plant.scientific_name>
+            <p><input type=submit value=Login>
+        </form>
+    '''
         else:
-            return "nao achou"
+            return "Não achou!"
     return render_template("pesquisa.html", form=form)

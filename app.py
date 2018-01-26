@@ -109,7 +109,7 @@ def dashboard():
     return render_template('pesquisa.html')
 
 
-@app.route('upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_test():
     if request.method == 'POST' and 'photo' in request.files:
         filename = photos.save(request.files['photo'])
