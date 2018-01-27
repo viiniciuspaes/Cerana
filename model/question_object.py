@@ -1,8 +1,8 @@
 class QuestionObj:
-    def __init__(self, question,description=None):
+    def __init__(self, question,description,tag):
         self.question_id = None
         self.user_id = None
-        self.tag_id = None
+        self.tag_id = tag
         self.photo_id = None
         self.description = description
         self.question = question

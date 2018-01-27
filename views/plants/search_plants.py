@@ -20,15 +20,15 @@ def search_plants(result=None):
             descricao = plant.description
             filo = plant.phylum
             familia = plant.family
-            return render_template('result_plant.html', filo = filo, familia = familia, nome_c = nome_c, nome_comum = nome_comum, reino = reino, descricao = descricao )  
+            return render_template('result_plant.html', filo = filo, familia = familia, nome_c = nome_c, nome_comum = nome_comum, reino = reino, descricao = descricao )
             #result = plant(request.args['family'])
             #return render_template('pesquisa.html', result=result)
-            #''' 
-        #<form method="post"> 
-            #<p><plant.scientific_name> 
-            #<p><input type=submit value=Login> 
-        #</form> 
-   #''' 
+            #'''
+        #<form method="post">
+            #<p><plant.scientific_name>
+            #<p><input type=submit value=Login>
+        #</form>
+   #'''
         else:
             return "Não achou!"
     return render_template("pesquisa.html", form=form)

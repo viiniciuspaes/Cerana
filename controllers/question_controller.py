@@ -1,4 +1,5 @@
 from model.comment_object import CommentObj
+from controllers.tag_controler import *
 from persistence.comment_dao import get_all_comments_from_question
 from persistence.question_dao import search_question, add_question, get_all_questions, delete_question
 
@@ -29,9 +30,9 @@ def get_all_comments(question):
 
 
 def create_question(question):
-    question_obj = search_question(question)
-    if question_obj:
-        return False
+    question_obj = search_question(question.get_question())
+    if question_obj: #falso se achar questao
+        return None
     else:
         question_id = add_question(question_obj)
         return question_id
