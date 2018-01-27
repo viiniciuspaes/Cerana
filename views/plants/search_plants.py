@@ -14,9 +14,13 @@ def search_plants(result=None):
     if request.method == "POST":
         plant = get_plant(form.scientific_name.data)
         if plant:
+            nome_c = plant.scientific_name
+            nome_comum = plant.popular_name
+            reino = plant.kingdom
+            descricao = plant.description
             filo = plant.phylum
             familia = plant.family
-            return filo, familia
+            return render_template('result_plant.html', filo = filo, familia = familia, nome_c = nome_c, nome_comum = nome_comum, reino = reino, descricao = descricao )  
             #result = plant(request.args['family'])
             #return render_template('pesquisa.html', result=result)
             #''' 

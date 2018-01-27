@@ -13,7 +13,7 @@ class IncludePlantForm(FlaskForm):
     kingdom = StringField('Reino', validators=[DataRequired()])
     phylum = StringField('Filo', validators=[DataRequired()])
     #photograph =
-    plant_description = StringField('Descrição', validators=[DataRequired()])
+    description = StringField('Descrição', validators=[DataRequired()])
     submit = SubmitField('Cadastrar')
 
 class SearchPlantForm(FlaskForm):

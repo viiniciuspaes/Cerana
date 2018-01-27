@@ -1,0 +1,40 @@
+<! doctype html>
+{% include 'navbar2.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Resultado Pesquisa Planta</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap_login/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/bootstrap_login/css/result-plant.css" rel="stylesheet">
+</head>
+
+<body>
+
+        <div class="starter-template">
+            {% if nome_c and nome_comum and familia and reino and filo and descricao %}
+            <h3>Nome Científico:</h3><h4>{{ nome_c }}</h4>
+            <h3>Nome Popular:</h3><h4>{{ nome_comum }}</h4>
+            <h3>Familia:</h3><h4>{{ familia }}</h4>
+            <h3>Reino:</h3><h4>{{ reino }}</h4>
+            <h3>Filo:</h3><h4>{{ filo }}</h4>
+            <h3>Descrição:</h3><h4>{{ descricao }}</h4>
+            {% else %}
+            < h1> Não encontrado! </ h1>
+            {% endif %}
+            <p class="lead"></p>
+        </div>
+
+   
+</body>
+
+</html>
