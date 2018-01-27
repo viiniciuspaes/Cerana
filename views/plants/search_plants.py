@@ -22,7 +22,6 @@ def search_plants(result=None):
             #''' 
         #<form method="post"> 
             #<p><plant.scientific_name> 
-+
             #<p><input type=submit value=Login> 
         #</form> 
    #''' 
