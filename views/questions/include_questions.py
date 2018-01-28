@@ -1,4 +1,3 @@
-from appdirs import unicode
 from flask import Blueprint, render_template, abort, url_for, redirect
 from flask_login import current_user, LoginManager
 from jinja2 import TemplateNotFound
@@ -23,7 +22,7 @@ def include_question():
         question = QuestionObj(form.question.data, form.description.data, tag_id, user_id)
         criado = create_question(question)
         if criado:
-            return redirect(url_for('question.search_quentions'))
+            return redirect(url_for('questions.search_questions'))
     try:
         return render_template("questions/create_question.html", form=form,title = "CadastroQuestao")
     except TemplateNotFound:
