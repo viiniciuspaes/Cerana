@@ -6,10 +6,10 @@ from controllers.tag_controler import *
 from .forms import IncludeQuestionsForm
 from model.question_object import QuestionObj
 
-create_questions = Blueprint('create_questions', __name__,
+include_questions = Blueprint('include_questions', __name__, 
                     template_folder='templates')
 
-@create_questions.route('/questions/create_questions', methods=['GET', 'POST'])
+@include_questions.route('/questions/include_questions', methods=['GET', 'POST']) 
 def include_question():
     form = IncludeQuestionsForm()
     if form.validate_on_submit():
