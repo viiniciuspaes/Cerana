@@ -11,7 +11,7 @@ def include_plant():
     erro = None
     form = IncludePlantForm()
     if form.validate_on_submit():
-        plant = PlantObj(form.scientific_name.data, form.popular_name.data, form.family.data, form.kingdom.data, form.phylum.data, form.plant_description.data)
+        plant = PlantObj(form.scientific_name.data, form.popular_name.data, form.family.data, form.kingdom.data, form.phylum.data, form.description.data)
         criado = create_plant_register(plant)
         if criado:
             return redirect(url_for('plants.search_plants'))

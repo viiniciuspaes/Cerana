@@ -1,4 +1,5 @@
 <! doctype html>
+
 {% include 'navbar2.html' %}
 <html lang="en">
 
@@ -19,20 +20,24 @@
 </head>
 
 <body>
+    
+        <div class="principal center-me">
+            
 
-        <div class="starter-template">
             {% if nome_c and nome_comum and familia and reino and filo and descricao %}
-            <h3>Nome Científico:</h3><h4>{{ nome_c }}</h4>
-            <h3>Nome Popular:</h3><h4>{{ nome_comum }}</h4>
-            <h3>Familia:</h3><h4>{{ familia }}</h4>
-            <h3>Reino:</h3><h4>{{ reino }}</h4>
-            <h3>Filo:</h3><h4>{{ filo }}</h4>
-            <h3>Descrição:</h3><h4>{{ descricao }}</h4>
+            <h4>Nome Científico: {{ nome_c }}</h4>
+            <h4>Nome Popular: {{ nome_comum }}</h4>
+            <h4>Familia: {{ familia }}</h4>
+            <h4>Reino: {{ reino }}</h4>
+            <h4>Filo: {{ filo }}</h4>
+            <h4>Descrição: {{ descricao }}</h4>
             {% else %}
-            < h1> Não encontrado! </ h1>
+            <h1> Não encontrado! </h1>
             {% endif %}
             <p class="lead"></p>
+                
         </div>
+   
 
    
 </body>

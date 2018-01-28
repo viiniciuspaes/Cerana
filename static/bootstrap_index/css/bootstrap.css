@@ -601,6 +601,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  text-align: center;
 }
 
 .no-gutters {
@@ -1114,6 +1115,7 @@ pre code {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
+    display: inline-block;
   }
   .col-md-7 {
     -webkit-box-flex: 0;

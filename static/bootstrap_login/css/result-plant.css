@@ -5,3 +5,29 @@ body {
   padding: 3rem 1.5rem;
   text-align: center;
 }
+.principal {
+  background-color: #fff;
+  width: 600px;
+  height: 400px;
+  margin-left: 0 auto;
+}
+
+.box {
+  background-color: #1976D2;
+  width: 300px;
+  height: 200px;
+}
+
+.box-inside {
+  background-color: #B2EBF2;
+  font-size: 32px;
+  width: 100px;
+  height: 100px;
+}
+
+.palavra {
+  background-color: #FFD54F;
+}
+.center-me {
+  margin: 0 auto;
+}
