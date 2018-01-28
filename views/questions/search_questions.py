@@ -14,7 +14,10 @@ def search_questions():
     if request.method == "POST":
         question = get_question(form.question.data)
         if question:
-            return question.get_question()
+            pergunta = question.question
+            descricao = question.description
+            tag = question.tag_id    
+            return render_template('result_question.html', pergunta = pergunta, descricao = descricao, tag = tag)
         else:
-            return "nao achou"
+            return "Não encontrado"
     return render_template("questions/pesquisa_pergunta.html", form=form)
