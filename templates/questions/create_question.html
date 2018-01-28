@@ -21,10 +21,11 @@
 <body class="text-center">
 
 
-    <form class="form-signin" method='POST' action="/plants/include_plants">
+    <form class="form-signin" method='POST' action="/questions/include_questions">
         {{ form.hidden_tag() }} 
         {{ form.question(type="string", id="search_questions", class="form-control", placeholder="Pergunta", required="autofocus")}} 
-        {{ form.description(type="string", id="search_questions", class="form-control", placeholder="Descrição", required="required")}} {{ form.tag(type="string", id="search_questions", class="form-control", placeholder="Tag", required="required")}}
+        {{ form.description(type="string", id="search_questions", class="form-control", placeholder="Descrição", required="required")}}
+        {{ form.tag(type="string", id="search_questions", class="form-control", placeholder="Tag", required="required")}}
 
         <button class="btn btn-lg btn-primary btn-block" id="btn_pesquisa" type="submit">Cadastrar Pergunta</button>
     </form>

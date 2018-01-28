@@ -5,7 +5,7 @@ def add_tag(tag_obj):
     session = get_session()
     session = session()
     new_tag = Tag()
-    new_tag.name = tag_obj.get_name()
+    new_tag.name = tag_obj.get_tag_name()
     session.add(new_tag)
     session.commit()
     session.refresh(new_tag)

@@ -6,7 +6,7 @@ def add_question(question_obj):
     session = get_session()
     session = session()
     new_question = Question()
-    new_question.user_id = int(User.get_id())
+    new_question.user_id = question_obj.get_user_id()
     new_question.tag_id = question_obj.get_tag_id()
     new_question.question = question_obj.get_question()
     new_question.description = question_obj.get_description()
