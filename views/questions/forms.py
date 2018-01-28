@@ -18,3 +18,10 @@ class SearchQuestionsForm(FlaskForm):
     """
     question = StringField('Digite a Pergunta', validators=[DataRequired()])
     submit = SubmitField('Pesquisar')
+    
+class CommentQuestionsForm(FlaskForm):
+    """
+    Form para comentar pergunta
+    """
+    answer = StringField('Digite a Pergunta', validators=[DataRequired()])
+    submit = SubmitField('Enviar')
