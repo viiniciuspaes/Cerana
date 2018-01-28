@@ -23,7 +23,7 @@ from views.plants.include_plants import include_plants as include_plants_bluepri
 from views.questions.include_questions import include_questions as include_questions_blueprint 
 
 
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, login_fresh
 
 app = Flask(__name__)
 app.register_blueprint(view_profile_blueprint)
@@ -42,7 +42,6 @@ configure_uploads(app, photos)
 
 Bootstrap(app)
 login_manager = LoginManager()
-login_manager.init_app(app)
 
 DEBUG_MODE = False
 init(drop_tables=DEBUG_MODE)

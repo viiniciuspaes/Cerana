@@ -34,7 +34,7 @@ def create_question(question):
     if question_obj: #falso se achar questao
         return None
     else:
-        question_id = add_question(question_obj)
+        question_id = add_question(question)
         return question_id
 
 

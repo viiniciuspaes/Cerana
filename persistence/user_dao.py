@@ -35,12 +35,11 @@ def update_user(user_obj):
 def search_user_from_id(user_id):
     session = get_session()
     session = session()
-    user_query = session.query(User).filter(User.id == user_id)
-    user_query = user_query[0]
+    user_query = session.query(User).filter(User.id == user_id).all()
     if user_query:
+        user_query = user_query[0]
         user_obj = UserObj(user_query.login, user_query.password)
         user_obj.set_type(user_query.user_type)
-        session.close()
 
         return (user_obj, user_query)
     else:

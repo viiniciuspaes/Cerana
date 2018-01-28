@@ -6,8 +6,8 @@ def add_question(question_obj):
     session = get_session()
     session = session()
     new_question = Question()
-    new_question.user_id = question_obj.get_user_id()
-    new_question.tag_id = question_obj.get_tag_id()
+    new_question.id_user = question_obj.get_user_id()
+    new_question.id_tag = question_obj.get_tag_id()
     new_question.question = question_obj.get_question()
     new_question.description = question_obj.get_description()
     session.add(new_question)
@@ -22,11 +22,9 @@ def search_question(question):
     session = get_session()
     session = session()
     question_query = session.query(Question).filter(Question.question == question).all()
-    if len(question_query) > 0:
-        question_query = question_query[0]
     if question_query:
-        question_obj = QuestionObj(question_query.question)
-        question_obj.set_description(question_query.description)
+        question_query = question_query[0]
+        question_obj = QuestionObj(question_query.question, question_query.description, question_query.id_tag, question_query.id_user)
         session.close()
         return question_obj
     else:

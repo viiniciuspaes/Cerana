@@ -11,16 +11,16 @@ def add_tag(tag_obj):
     session.refresh(new_tag)
     tag_id = new_tag
     session.close()
-    return tag_id
+    return tag_id.id
 
 def search_tag(tag):
     session = get_session()
     session = session()
     tag_query = session.query(Tag).filter(Tag.name == tag).all()
-    if len(tag_query) > 0:
-        tag_query = tag_query[0]
     if tag_query:
+        tag_query = tag_query[0]
         tag_obj = TagObj(tag_query.name)
+        tag_obj.set_tag_id(tag_query.id)
         session.close()
         return tag_obj
     else:
