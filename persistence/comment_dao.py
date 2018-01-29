@@ -15,15 +15,15 @@ def get_question_id(question):
     return question_obj.get_question_id()
 
 
-def add_comment(comment_obj, question_obj):
+def add_comment(comment_obj):
     session = get_session()
     session = session()
     new_comment = Comment()
     new_comment.likes = comment_obj.get_likes()
     new_comment.mark = comment_obj.get_mark()
     new_comment.answer = comment_obj.get_answer()
-    new_comment.id_question = get_question_id(question_obj)
-    new_comment.id_user = get_user_from_question(question_obj).get_id()
+    new_comment.id_question = comment_obj.get_question_id()
+    new_comment.id_user = comment_obj.get_user_id()
     session.add(new_comment)
     session.commit()
     session.refresh(new_comment)
@@ -35,8 +35,9 @@ def add_comment(comment_obj, question_obj):
 def search_comment(answer):
     session = get_session()
     session = session()
-    comment_query = session.query(Comment).filter(Comment.answer == answer)
-    comment_query = comment_query[0]
+    comment_query = session.query(Comment).filter(Comment.answer == answer).all()
+    if len(comment_query) > 0:
+        comment_query = comment_query[0]
     if comment_query:
         comment_obj = CommentObj()
         comment_obj.set_answer(comment_query.answer)

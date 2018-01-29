@@ -21,7 +21,7 @@ from views.plants.search_plants import plants as plants_blueprint
 from views.questions.search_questions import questions as questions_blueprint
 from views.plants.include_plants import include_plants as include_plants_blueprint
 from views.questions.include_questions import include_questions as include_questions_blueprint 
-
+from views.questions.comment_questions import comment_questions as comment_questions_blueprint 
 
 from flask_login import LoginManager, login_user, logout_user, login_fresh
 
@@ -33,6 +33,7 @@ app.register_blueprint(questions_blueprint)
 app.register_blueprint(plants_blueprint)
 app.register_blueprint(include_plants_blueprint)
 app.register_blueprint(include_questions_blueprint) 
+app.register_blueprint(comment_questions_blueprint) 
 
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 app.config['UPLOADED_PHOTOS_DEST'] = 'imagens/plants'

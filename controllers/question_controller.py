@@ -48,3 +48,7 @@ def erase_question(question):
 
 def get_question(question):
     return search_question(question)
+
+def get_question_id(question):
+    question_id = search_question(question)
+    return question_id.get_question_id

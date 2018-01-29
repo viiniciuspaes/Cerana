@@ -18,8 +18,8 @@ def search_questions():
             pergunta = question.question
             descricao = question.description
             tag = question.tag_id
-            answer = None
-            return render_template('result_question.html', formC=formC, answer=answer, pergunta = pergunta, descricao = descricao, tag = tag)
+            
+            return render_template('result_question.html', formC=formC, pergunta = pergunta, descricao = descricao, tag = tag)
         else:
             return "Não encontrado"
     return render_template("questions/pesquisa_pergunta.html", form=form)

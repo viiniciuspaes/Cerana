@@ -23,5 +23,6 @@ class CommentQuestionsForm(FlaskForm):
     """
     Form para comentar pergunta
     """
-    answer = StringField('Digite a Pergunta', validators=[DataRequired()])
+    question = StringField('Reescreva a Pergunta', validators=[DataRequired()])
+    answer = StringField('Digite a Resposta', validators=[DataRequired()])
     submit = SubmitField('Enviar')

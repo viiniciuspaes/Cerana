@@ -10,12 +10,12 @@ def like_comment(comment_obj):
     update_comment(comment_obj)
 
 
-def comment_post(comment_obj, question_obj):
+def comment_post(comment_obj):
     comment = search_comment(comment_obj.get_answer())
     if comment:
         return False
     else:
-        comment_id = add_comment(comment_obj, question_obj)
+        comment_id = add_comment(comment_obj)
         return comment_id
 
 

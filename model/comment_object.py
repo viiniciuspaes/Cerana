@@ -1,11 +1,11 @@
 class CommentObj:
-    def __init__(self):
+    def __init__(self, answer, question_id, user_id):
         self.comment_id = None
-        self.question_id = None
-        self.user_id = None
+        self.question_id = question_id
+        self.user_id = user_id
         self.likes = 0
         self.mark = False
-        self.answer = None
+        self.answer = answer
 
     def get_comment_id(self):
         return self.comment_id

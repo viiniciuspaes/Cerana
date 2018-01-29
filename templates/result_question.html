@@ -35,9 +35,12 @@
             <h1> Não encontrado! </h1>
             {% endif %}
             <p class="lead"></p>
+          
             <form class="form-signin2" method="POST" action="/questions/comment_questions">
             {{ formC.hidden_tag() }}
+            {{ formC.question(type="string", id="search_questions", class="form-control", placeholder="Digitar resposta", required="autofocus")}}
             {{ formC.answer(type="string", id="search_questions", class="form-control", placeholder="Digitar resposta", required="autofocus")}}
+           
             <button class="btn btn-lg btn-primary btn-block" id="btn_enviar_resposta" type="submit">Enviar</button>
         </form>  
         </div>

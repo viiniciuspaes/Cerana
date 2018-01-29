@@ -5,7 +5,7 @@ from controllers.question_controller import *
 from controllers.tag_controler import *
 from controllers.comment_controller import *
 
-from .forms import IncludeQuestionsForm
+from .forms import CommentQuestionsForm, SearchQuestionsForm
 from model.question_object import QuestionObj
 from model.tag_object import TagObj
 from model.comment_object import CommentObj
@@ -15,18 +15,18 @@ comment_questions = Blueprint('comment_questions', __name__,
 
 
 @comment_questions.route('/questions/comment_questions', methods=['GET', 'POST']) 
-def cemment_question():
-    form = CommentQuestionsForm()
-    if form.validate_on_submit():
-        question = QuestionObj(form..data)
-        question_id = get_question(question)
+def comment_question():
+    formC = CommentQuestionsForm(csrf_enabled=False)
+    if formC.validate_on_submit():
+        question = get_question(formC.question.data)
+        #comment_obj.set_user_id(current_user.id)
+        question_id = question.get_question_id
+        #comment_obj.set_question_id(question_id)
         user_id = int(current_user.id)
-        comment = CommentObj(form.answer.data)
-        criado = comment_post(comment, question)
+        #comment_obj.set_user_id(current_user.id)
+        answer = CommentObj(formC.answer.data, question_id, user_id)
+        criado = comment_post(answer)
         if criado:
             return redirect(url_for('questions.search_questions'))
-    try:
-        return render_template("questions/create_question.html", form=form,title = "CadastroQuestao")
-    except TemplateNotFound:
-        abort(404)
+    return nada
  
