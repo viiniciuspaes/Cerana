@@ -39,12 +39,9 @@ def search_comment(answer):
     if len(comment_query) > 0:
         comment_query = comment_query[0]
     if comment_query:
-        comment_obj = CommentObj()
-        comment_obj.set_answer(comment_query.answer)
+        comment_obj = CommentObj(comment_query.answer, comment_query.id_question, comment_query.id_user)
         comment_obj.set_likes(comment_query.likes)
         comment_obj.set_mark(comment_query.mark)
-        comment_obj.set_question_id(comment_query.id_question)
-        comment_obj.set_user_id(comment_query.id_user)
         comment_obj.set_comment_id(comment_query.id)
         session.close()
         return comment_obj

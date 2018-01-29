@@ -25,6 +25,7 @@ def search_question(question):
     if question_query:
         question_query = question_query[0]
         question_obj = QuestionObj(question_query.question, question_query.description, question_query.id_tag, question_query.id_user)
+        question_obj.set_question_id(question_query.id)
         session.close()
         return question_obj
     else:

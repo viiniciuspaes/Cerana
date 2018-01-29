@@ -20,7 +20,7 @@ def comment_question():
     if formC.validate_on_submit():
         question = get_question(formC.question.data)
         #comment_obj.set_user_id(current_user.id)
-        question_id = question.get_question_id
+        question_id = question.get_question_id()
         #comment_obj.set_question_id(question_id)
         user_id = int(current_user.id)
         #comment_obj.set_user_id(current_user.id)
