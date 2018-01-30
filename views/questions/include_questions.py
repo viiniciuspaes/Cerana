@@ -25,6 +25,7 @@ def include_question():
             return redirect(url_for('questions.search_questions'))
     try:
         return render_template("questions/create_question.html", form=form,title = "CadastroQuestao")
+
     except TemplateNotFound:
         abort(404)
  

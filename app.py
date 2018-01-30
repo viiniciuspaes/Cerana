@@ -9,6 +9,8 @@ from model.photo_object import PhotoObj
 from model.plant_object import PlantObj
 from model.user_object import UserObj
 
+import os
+
 
 from controllers.user_controller import validate_login, validate_sing_up, get_user_logged
 from utils.parser import text_to_json, user_parser_json
@@ -47,6 +49,7 @@ login_manager = LoginManager()
 DEBUG_MODE = False
 init(drop_tables=DEBUG_MODE)
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def exception_404():
     abort(404)
@@ -109,18 +112,22 @@ def login_mobile():
 def dashboard():
     return render_template('pesquisa.html')
 
+@app.route('/upload', methods = ['POST'])
+def upload():
+    target = os.path.join(APP_ROOT,"imagens/banco_planta/" )
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload_test():
-    if request.method == 'POST' and 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        plant_obj = PlantObj("example", 'example_popular')
-        plant_id = create_plant_register(plant_obj)
-        photo_obj = PhotoObj(filename)
-        photo_obj.set_plant_id(plant_id)
-        save_photo(photo_obj)
-        return filename
-    return 'So para testes'
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    for file in request.files.getlist("file"):
+        filename = file.filename
+        destination = "/".join([target, filename])
+        file.save(destination)
+    return None
+    
+
+
+
 
 
 @app.route('/logout')

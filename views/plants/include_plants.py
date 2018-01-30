@@ -19,4 +19,3 @@ def include_plant():
         return render_template("plant/include_plantT.html", form=form,title = "CadastroPlanta")
     except TemplateNotFound:
         abort(404)
-

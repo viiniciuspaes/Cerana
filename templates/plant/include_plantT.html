@@ -21,7 +21,7 @@
 <body class="text-center">
 
 
-    <form class="form-signin" method='POST' action="/plants/include_plants">
+    <form  class="form-signin" method='POST' action="/plants/include_plants" >
         {{ form.hidden_tag() }}
         {{ form.scientific_name(type="string", id="search_questions", class="form-control", placeholder="Nome Científico", required="autofocus")}}
         {{ form.popular_name(type="string", id="search_questions", class="form-control", placeholder="Nome Popular", required="required")}}
@@ -29,7 +29,14 @@
         {{ form.kingdom(type="string", id="search_questions", class="form-control", placeholder="Reino", required="required")}}
         {{ form.phylum(type="string", id="search_questions", class="form-control", placeholder="Filo", required="required")}}
         {{ form.description(type="string", id="search_questions", class="form-control", placeholder="Descrição", required="required")}}
+   
         <button class="btn btn-lg btn-primary btn-block" id="btn_pesquisa" type="submit">Cadastrar Planta</button>
+        
+    </form>  
+    
+    <form id = "upload-form" action = "{{ url_for('upload') }}" method='POST' enctype="multipart/form-data">
+        <input type="file" name = "file" accept="image/*" multiple>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">enviar foto</button>
     </form>
 
 
