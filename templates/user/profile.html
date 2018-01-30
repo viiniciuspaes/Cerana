@@ -15,77 +15,14 @@
 
 <body>
 
-
-    <!-- Navbar 
-	    <nav class="navbar navbar-default navbar-static-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	        </div>
-	        
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="/dashboard">Voltar para Home</a></li>
-	          </ul>
-	        </div><!--onde o nav morre 
-	      </div>
-	    </nav> 
-        -->
-
-    <div class="container">
-
-        <div class="container">
-            <div class="col-md-2 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="col-md-12">
-                            <img class="img_profile" width="90px" height="90px" src="avatar.jpg">
-                        </div>
-
-
-
-                        <!--	<div class="col-md-12">
-	    					<br>
-	    					<a href="#"><span class="navigation_item" color="#000000"></span>Notificações</a><br />
-	    				</div> -->
-                        <div class="col-md-12">
-                            <br>
-                            <a href="#"><span class="navigation_item" color="#000000"></span>Banco</a><br />
-                            <!--Botar a variavel aqui -->
-                        </div>
-                        <div class="col-md-12">
-                            <br>
-                            <a href="../questions"><span class="navigation_item" color="#000000"></span>Perguntas</a><br />
-                            <!--Botar a variavel aqui -->
-                        </div>
-                        <div class="col-md-12">
-                            <br>
-                            <a href="../profile/edit_profile"><span class="navigation_item" color="#000000"></span>Editar perfil</a><br />
-                            <!--Botar a variavel aqui -->
-                        </div>
-                        <div class="col-md-12">
-                            <br>
-                            <a href="#"><span class="navigation_item" color="#000000"></span>Pessoas</a><br />
-                            <!--Botar a variavel aqui -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="container">
                 <div class="row">
-
+                    {% if name and birth and email and phone and occupation %}
                     <div class="col-md-6">
-
 
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Nome Usuario</h3>
+                                <h3 class="panel-title">Nome Usuario: {{ name }}</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
@@ -95,22 +32,25 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Email:</td>
-                                                    <td>usuario@cerana.com.br</td>
+                                                    <td>Email: {{email}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Data de nascimento:</td>
-                                                    <td>01/24/1988</td>
+                                                    <td>Data de nascimento: {{birth}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Graduação:</td>
-                                                    <td></td>
+                                                    <td>Graduação: {{occupation}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Telefone:</td>
-                                                    <td>(XX)XXXX-XXXX</td>
+                                                    <td>Telefone: {{phone}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        {% else %}
+                                        <h1> Não encontrado! </h1>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

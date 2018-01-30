@@ -3,6 +3,7 @@ from jinja2 import TemplateNotFound
 from controllers.plant_controller import *
 from .forms import *
 from flask import request
+import os
 
 
 plants = Blueprint('plants', __name__,
@@ -11,6 +12,8 @@ plants = Blueprint('plants', __name__,
 @plants.route('/search_plants', methods=['GET', 'POST'])
 def search_plants(result=None):
     form = SearchPlantForm(csrf_enabled=False)
+    image_names = os.listdir("././imagens/banco_planta")
+    #print(image_names)
     if request.method == "POST":
         plant = get_plant(form.scientific_name.data)
         if plant:
@@ -31,4 +34,4 @@ def search_plants(result=None):
    #'''
         else:
             return "Não achou!"
-    return render_template("pesquisa.html", form=form)
+    return render_template("pesquisa.html", form=form,image_names=image_names)

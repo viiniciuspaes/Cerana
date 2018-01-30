@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
-
+from flask_login import current_user
 from .forms import ProfileForm
 
+from controllers.profile_controller import *
 
 user = Blueprint('user', __name__,
                     template_folder='templates')
@@ -11,8 +12,13 @@ user = Blueprint('user', __name__,
 @user.route('/user/view_profile', methods=['GET', 'POST'])
 def view_profile():
     form = ProfileForm()
+    profile = profile_data(int(current_user.id))
+    name = profile.name
+    birth = profile.birth
+    phone = profile.phone
+    occupation = profile.occupation
     try:
-        return render_template('user/profile-bootstrap.html')
+        return render_template('user/profile-bootstrap.html', name = name, birth = birth, phone = phone, occupation = occupation)
     except TemplateNotFound:
         abort(404)
 

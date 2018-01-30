@@ -9,6 +9,7 @@ class ProfileObj:
         self.phone = None
         self.specialty = specialty
         self.user_id = None
+        self.email = None
 
     def get_user_id(self):
         return self.user_id
@@ -63,3 +64,9 @@ class ProfileObj:
 
     def set_id(self, id):
         self.id = id
+
+    def get_email(self):
+        return self.email
+
+    def set_email(self, email):
+        self.email = email

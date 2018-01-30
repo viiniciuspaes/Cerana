@@ -1,4 +1,5 @@
-from flask import Flask, abort, flash, redirect, render_template, url_for, request, Blueprint
+from flask import Flask, abort, flash, redirect, render_template, url_for, request, Blueprint, send_from_directory
+
 from flask_bootstrap import Bootstrap
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 
@@ -11,6 +12,9 @@ from model.user_object import UserObj
 
 import os
 
+from controllers.plant_controller import *
+from views.plants.forms import *
+from flask import request
 
 from controllers.user_controller import validate_login, validate_sing_up, get_user_logged
 from utils.parser import text_to_json, user_parser_json
@@ -115,7 +119,8 @@ def dashboard():
 @app.route('/upload', methods = ['POST'])
 def upload():
     target = os.path.join(APP_ROOT,"imagens/banco_planta/" )
-
+    form = SearchPlantForm(csrf_enabled=False)
+    image_names = os.listdir("././imagens/banco_planta")
     if not os.path.isdir(target):
         os.mkdir(target)
 
@@ -123,7 +128,24 @@ def upload():
         filename = file.filename
         destination = "/".join([target, filename])
         file.save(destination)
-    return None
+
+
+    plant = get_plant(form.scientific_name.data)
+    if plant:
+        nome_c = plant.scientific_name
+        nome_comum = plant.popular_name
+        reino = plant.kingdom
+        descricao = plant.description
+        filo = plant.phylum
+        familia = plant.family
+        return render_template('result_plant.html', filo = filo, familia = familia, nome_c = nome_c, nome_comum = nome_comum, reino = reino, descricao = descricao )
+    return render_template("pesquisa.html", form=form,image_names=image_names)
+
+
+        
+@app.route('/upload/<filename>')
+def send_image(filename):
+    return send_from_directory("imagens/banco_planta/", filename)
     
 
 
