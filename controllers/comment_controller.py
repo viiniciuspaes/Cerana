@@ -16,7 +16,7 @@ def comment_post(comment_obj):
         return False
     else:
         comment_id = add_comment(comment_obj)
-        return comment_id
+        return comment_obj
 
 
 def delete_comment(comment_obj):

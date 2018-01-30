@@ -26,7 +26,11 @@ def comment_question():
         #comment_obj.set_user_id(current_user.id)
         answer = CommentObj(formC.answer.data, question_id, user_id)
         criado = comment_post(answer)
+        pergunta = question.get_question()
+        resposta = criado.get_answer()
         if criado:
-            return redirect(url_for('questions.search_questions'))
-    return nada
+             return render_template('result_answer.html', formC=formC, resposta = resposta, pergunta = pergunta )
+        else:
+            return "Não encontrado"
+    return render_template("questions/pesquisa_pergunta.html", form=form)
  
