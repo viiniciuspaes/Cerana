@@ -20,20 +20,22 @@
 </head>
 
 <body>
-    
-        <div class="principal center-me">
-            
-
-            {% if pergunta and resposta %}
-            <h4>Pergunta: {{ pergunta }}</h4>
-            <h3>Resposta: {{ resposta }}</h3>
-            {% else %}
-            <h1> Não encontrado! </h1>
-            {% endif %}
-            <p class="lead"></p>
-                
-        </div>
-   
+        {% if pergunta and resposta %}
+        <h2>{{ pergunta }}</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Respostas</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ resposta }}</td>                        
+                    </tr>
+        {% else %}
+        <h1> Não encontrado! </h1>
+        {% endif %}
 
    
 </body>

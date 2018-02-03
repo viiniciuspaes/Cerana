@@ -16,7 +16,7 @@ comment_questions = Blueprint('comment_questions', __name__,
 
 @comment_questions.route('/questions/comment_questions', methods=['GET', 'POST']) 
 def comment_question():
-    formC = CommentQuestionsForm(csrf_enabled=False)
+    formC = CommentQuestionsForm()
     if formC.validate_on_submit():
         question = get_question(formC.question.data)
         #comment_obj.set_user_id(current_user.id)
@@ -28,6 +28,8 @@ def comment_question():
         criado = comment_post(answer)
         pergunta = question.get_question()
         resposta = criado.get_answer()
+        #resposta = order_comments_on_question(question)
+        
         if criado:
              return render_template('result_answer.html', formC=formC, resposta = resposta, pergunta = pergunta )
         else:

@@ -10,8 +10,8 @@ questions = Blueprint('questions', __name__,
 
 @questions.route('/search_questions', methods=['GET', 'POST'])
 def search_questions():
-    formC = CommentQuestionsForm(csrf_enabled=False)
-    form = SearchQuestionsForm(csrf_enabled=False)
+    formC = CommentQuestionsForm()
+    form = SearchQuestionsForm()
     if request.method == "POST":
         question = get_question(form.question.data)
         if question:
