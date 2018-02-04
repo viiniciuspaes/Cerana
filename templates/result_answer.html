@@ -17,27 +17,54 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/bootstrap_login/css/result-plant.css" rel="stylesheet">
+
+    <style>
+        .wrap-photo {
+            text-align: center;
+        }
+
+        .photo {
+            margin: 0 200px 10px;
+        }
+    </style>
 </head>
 
 <body>
-        {% if pergunta and resposta %}
-        <h2>{{ pergunta }}</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Respostas</th>                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ resposta }}</td>                        
-                    </tr>
-        {% else %}
-        <h1> Não encontrado! </h1>
-        {% endif %}
+    <hr class="featurette-divider">
 
-   
+    <div class="row">
+
+        <div class="col-md-6 pull-md-7">
+
+            <img class="photo" src="../static/img/blog_post1.jpg" height="350px" width="350px" alt="Generic placeholder image" />
+        </div>
+
+        <div class="col-md-6 push-md-5">
+
+            {% if pergunta and resposta %}
+            <h2>{{ pergunta }}</h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Respostas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ resposta }}</td>
+                        </tr>
+                            {% else %}
+                        <h1> Não encontrado! </h1>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
