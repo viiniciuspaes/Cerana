@@ -14,6 +14,7 @@ def add_plant(plant_obj):
     new_plant.kingdom = plant_obj.get_kingdom()
     new_plant.phylum = plant_obj.get_phylum()
     new_plant.description = plant_obj.get_description()
+    new_plant.photodir = plant_obj.get_photodir()
     session.add(new_plant)
     session.commit()
     session.refresh(new_plant)

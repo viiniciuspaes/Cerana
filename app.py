@@ -116,7 +116,7 @@ def login_mobile():
 def dashboard():
     return render_template('pesquisa.html')
 
-@app.route('/upload', methods = ['POST'])
+@app.route('/upload', methods = ['GET','POST'])
 def upload():
     target = os.path.join(APP_ROOT,"imagens/banco_planta/" )
     form = SearchPlantForm(csrf_enabled=False)
@@ -128,7 +128,6 @@ def upload():
         filename = file.filename
         destination = "/".join([target, filename])
         file.save(destination)
-
 
     plant = get_plant(form.scientific_name.data)
     if plant:
@@ -146,9 +145,7 @@ def upload():
 @app.route('/upload/<filename>')
 def send_image(filename):
     return send_from_directory("imagens/banco_planta/", filename)
-    
-
-
+  
 
 
 
