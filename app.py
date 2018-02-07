@@ -42,7 +42,7 @@ app.register_blueprint(include_questions_blueprint)
 app.register_blueprint(comment_questions_blueprint) 
 
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-app.config['UPLOADED_PHOTOS_DEST'] = 'imagens/plants'
+app.config['UPLOADED_PHOTOS_DEST'] = 'imagens/banco_planta/'
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
