@@ -79,8 +79,16 @@ def get_all_comments():
 def get_all_comments_from_question(question):
     session = get_session()
     session = session()
+    outpu = []
     questions = session.query(Comment).filter(Comment.id_question == question.get_id()).all()
-    return questions
+    for comment_query in questions:
+        comment_obj = CommentObj(comment_query.answer, comment_query.id_question, comment_query.id_user)
+        comment_obj.set_likes(comment_query.likes)
+        comment_obj.set_mark(comment_query.mark)
+        comment_obj.set_comment_id(comment_query.id)
+        outpu.append(comment_obj)
+    session.close()
+    return outpu
 
 
 def delete_comment(answer):
