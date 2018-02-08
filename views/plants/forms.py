@@ -12,7 +12,7 @@ class IncludePlantForm(FlaskForm):
     family = StringField('Família', validators=[DataRequired()])
     kingdom = StringField('Reino', validators=[DataRequired()])
     phylum = StringField('Filo', validators=[DataRequired()])
-    #foto = SubmitField('Enviar foto')
+    foto = SubmitField('Enviar foto')
     description = StringField('Descrição', validators=[DataRequired()])
     submit = SubmitField('Cadastrar')
 
