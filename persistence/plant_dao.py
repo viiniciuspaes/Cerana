@@ -31,6 +31,7 @@ def search_plant(scientific_name):
         plant_query = plant_query[0]
     if plant_query:
         plant_obj = PlantObj(plant_query.scientific_name, plant_query.popular_name)
+        plant_obj.set_photodir(plant_query.photodir)
         plant_obj.set_description(plant_query.description)
         plant_obj.set_family(plant_query.family)
         plant_obj.set_phylum(plant_query.phylum)

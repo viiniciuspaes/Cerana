@@ -35,7 +35,7 @@
     <div class="row">
       
         <div class="col-md-6 pull-md-7" >
-            <img class="photo" src="../static/img/blog_post1.jpg" height="350px" width="350px" alt="Generic placeholder image"/>
+            <img class="photo" src="../imagens/banco_planta/{{ destino }}" height="350px" width="350px" alt="Generic placeholder image"/>
         </div>
         <div class="col-md-6 push-md-5">
             {% if nome_c and nome_comum and familia and reino and filo and descricao %}
@@ -45,6 +45,7 @@
             <p>Reino: {{ reino }}</p>
             <p>Filo: {{ filo }}</p>
             <h4>Descrição: {{ descricao }}</h4>
+            <p>{{ destino }}</p>
             {% else %}
             <h1> Não encontrado! </h1>
             {% endif %}

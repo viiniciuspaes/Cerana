@@ -16,6 +16,7 @@ def include_plant():
     form = IncludePlantForm()
     target = os.path.join(APP_ROOT,"imagens/banco_planta/" )
     image_names = os.listdir("././imagens/banco_planta")
+    destino = ""
     
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -23,13 +24,11 @@ def include_plant():
     for file in request.files.getlist("file"):
         filename = file.filename
         destination = "/".join([target, filename])
-        print(destination)
+        destino = filename
         file.save(destination)
         
-    #destino = destination
-    #print(destino)
     if form.validate_on_submit():
-        plant = PlantObj(form.scientific_name.data, form.popular_name.data, form.family.data, form.kingdom.data, form.phylum.data, form.description.data)
+        plant = PlantObj(form.scientific_name.data, form.popular_name.data, form.family.data, form.kingdom.data, form.phylum.data, form.description.data, destino)
         criado = create_plant_register(plant)
         if criado:
             return redirect(url_for('plants.search_plants'))
