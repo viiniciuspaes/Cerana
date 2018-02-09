@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
-
 <html lang="pt-br">
 {% include 'navbar2.html' %}
 
 <head>
 
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap core CSS -->
     <link href="../static/bootstrap_login/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,36 +21,10 @@
 
 
     <form class="form-signin" method="POST" action="{{ url_for('plants.search_plants') }}">
-        {{ form.hidden_tag() }} 
-        {{ form.scientific_name(type="string", id="search_plants", class="form-control", placeholder="Nome Científico", required="autofocus") }}
+        {{ form.hidden_tag() }} {{ form.scientific_name(type="string", id="search_plants", class="form-control", placeholder="Nome Científico", required="autofocus") }}
 
         <button class="btn btn-lg btn-primary btn-block" id="btn_pesquisa" type="submit">Pesquisar Planta</button>
     </form>
-
-    <div class="container">
-
-        <div class="row">
-            {% for image_name in image_names %}
-            <div class="col-md-4"">
-                    <div class="card" style="width: 20rem;">
-                            <img class="img-responsive" height="180px" width="318px" src=" {{url_for('send_image', filename=image_name)}}">
-                            <div class="card-block">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text">teste123</p>
-                              <a href="#" class="btn btn-primary">Mais Detalhes</a>
-                            </div>
-                          </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <!--
-    <form>
-     {% if result %}
-     <textarea cols="50" rows="4" name="result">{{ result }}</textarea>
-     {% endif %}
-    </form>
-    -->
 
 </body>
 
