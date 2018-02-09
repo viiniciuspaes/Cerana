@@ -27,11 +27,12 @@ def comment_question():
         answer = CommentObj(formC.answer.data, question_id, user_id)
         criado = comment_post(answer)
         pergunta = question.get_question()
+        respostas = order_comments_on_question(question)
         resposta = criado.get_answer()
         #resposta = order_comments_on_question(question)
         
         if criado:
-             return render_template('result_answer.html', formC=formC, resposta = resposta, pergunta = pergunta )
+             return render_template('result_answer.html', formC=formC, respostas = respostas, pergunta = pergunta )
         else:
             return "Não encontrado"
     return render_template("questions/pesquisa_pergunta.html", form=form)

@@ -112,7 +112,7 @@ class Plant(Base):
     kingdom = Column(cons.PLANT_KINGDOM, String(60))
     phylum = Column(cons.PLANT_PHYLUM, String(60))
     description = Column(cons.PLANT_DESCRIPTION, String(254), nullable=False)
-    #photodir = Column(cons.PLANT_PHOTODIR, String(60))
+    photodir = Column(cons.PLANT_PHOTODIR, String(60))
 
 
 class Photo(Base):

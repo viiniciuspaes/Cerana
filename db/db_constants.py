@@ -59,7 +59,7 @@ PLANT_FAMILY = "family"
 PLANT_KINGDOM = "kingdom"
 PLANT_PHYLUM = "phylum"
 PLANT_DESCRIPTION = "plant_description"
-#PHOTODIR = "photo_dir"
+PLANT_PHOTODIR = "photo_dir"
 
 TABLE_ANIMALS = "animals"
 ANIMAL_ID = "animal_id"

@@ -36,33 +36,32 @@
 
     <hr class="featurette-divider">
 
-    <div class="row">
+
 
         <div class="col-md-6 pull-md-7">
-            
             <img class="photo" src="../static/img/blog_post1.jpg" height="350px" width="350px" alt="Generic placeholder image" />
-        </div>
 
+        </div>
         <div class="col-md-6 push-md-5">
 
-            {% if pergunta and descricao and tag %}
-            <h4>Pergunta: {{ pergunta }}</h4>
-            <h4>Tag: {{ tag }}</h4>
-            <h4>Descrição: {{ descricao}}</h4>
-            {% else %}
-            <h1> Não encontrado! </h1>
-            {% endif %}
+                {% if pergunta and descricao and tag %}
+                <h3>Pergunta: {{ pergunta }}</h3>
+                <h3>Tag: {{ tag }}</h3>
+                <h3>Descrição: {{ descricao}}</h3>
+                {% else %}
+                <h1> Não encontrado! </h1>
+                {% endif %}
 
-            <hr class="featurette-divider">
 
-            <form class="form-signin2" method="POST" action="/questions/comment_questions">
-                {{ formC.hidden_tag() }} {{ formC.question(type="string", id="search_questions", class="form-control", placeholder="Digitar
-                resposta", required="autofocus")}} {{ formC.answer(type="string", id="search_questions", class="form-control",
-                placeholder="Digitar resposta", required="autofocus")}}
+                <form class="form-signin2" method="POST" action="/questions/comment_questions">
+                    {{ formC.hidden_tag() }} {{ formC.question(type="string", id="search_questions", class="form-control", placeholder="Digitar resposta", required="autofocus")}} {{ formC.answer(type="string", id="search_questions", class="form-control", placeholder="Digitar resposta", required="autofocus")}}
 
-                <button class="btn btn-lg btn-primary btn-block" id="btn_enviar_resposta" type="submit">Enviar</button>
-            </form>
-        </div>
-    </div>
+                    <button class="btn btn-lg btn-primary btn-block" id="btn_enviar_resposta" type="submit">Enviar</button>
+                </form>
+            </div>
+
+    
+
 </body>
+
 </html>

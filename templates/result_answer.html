@@ -41,7 +41,7 @@
 
         <div class="col-md-6 push-md-5">
 
-            {% if pergunta and resposta %}
+            {% if pergunta %}
             <h2>{{ pergunta }}</h2>
 
             <div class="table-responsive">
@@ -49,13 +49,15 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Respostas</th>
+                    <!--        <th>Respostas</th>  -->
                         </tr>
                     </thead>
+                    {% for resposta in respostas %}
                     <tbody>
                         <tr>
-                            <td>{{ resposta }}</td>
+                            <td>{{ resposta.get_answer() }}</td>
                         </tr>
+                    {% endfor %}
                             {% else %}
                         <h1> Não encontrado! </h1>
                         {% endif %}
