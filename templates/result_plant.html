@@ -33,31 +33,25 @@
     <hr class="featurette-divider">
     
     <div class="row">
-      
+        {% if destino and nome_c and nome_comum and familia and reino and filo and descricao %}
         <div class="col-md-6 pull-md-7" >
-            <img class="photo" src="../imagens/banco_planta/{{ destino }}" height="350px" width="350px" alt="Generic placeholder image"/>
-        </div>
+            <img class="photo" height="350px" width="350px" src=" {{url_for('send_image', filename=destino)}}">
+       </div>
+       
         <div class="col-md-6 push-md-5">
-            {% if nome_c and nome_comum and familia and reino and filo and descricao %}
+         
             <h2>Nome Científico: {{ nome_c }}</h2>
             <p>Nome Popular: {{ nome_comum }}</p>
             <p>Familia: {{ familia }}</p>
             <p>Reino: {{ reino }}</p>
             <p>Filo: {{ filo }}</p>
             <h4>Descrição: {{ descricao }}</h4>
-            <p>{{ destino }}</p>
             {% else %}
             <h1> Não encontrado! </h1>
             {% endif %}
         </div>
     </div>
    
-    
     <hr class="featurette-divider">
     
-   
-
-   
-
-
 </html>
